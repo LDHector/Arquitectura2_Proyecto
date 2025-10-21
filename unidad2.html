@@ -1,0 +1,448 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Unidad 2 - Representación de Datos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo"><h1>AM</h1></div>
+        <div>
+          <h2 class="title">Unidad 2: Representación de Datos</h2>
+          <small style="color:#9fb8ff">Sistemas numéricos y aritmética computacional</small>
+        </div>
+      </div>
+      <nav>
+        <div class="menu">
+          <a href="index.html" class="btn">🏠 Inicio</a>
+          <a href="unidad1.html" class="btn">⬅️ Unidad 1</a>
+          <button class="btn" onclick="scrollToSection('sistemas')">🔢 Sistemas</button>
+          <button class="btn" onclick="scrollToSection('aritmetica')">🧮 Aritmética</button>
+        </div>
+      </nav>
+    </header>
+
+    <div class="grid">
+      <main>
+        <section id="sistemas">
+          <div class="section-header">
+            <h3>Sistemas Numéricos</h3>
+            <span class="badge">Fundamentos</span>
+          </div>
+
+          <div class="card interactive-card" onclick="toggleCard(this)">
+            <div class="card-header">
+              <h4>2.1 Sistemas de Numeración</h4>
+              <span class="toggle-icon">+</span>
+            </div>
+            <div class="card-content">
+              <div class="number-systems">
+                <div class="number-system">
+                  <h5>Decimal (Base 10)</h5>
+                  <p>Dígitos: 0-9</p>
+                  <code>123<sub>10</sub> = 1×10² + 2×10¹ + 3×10⁰</code>
+                </div>
+                <div class="number-system">
+                  <h5>Binario (Base 2)</h5>
+                  <p>Dígitos: 0,1</p>
+                  <code>1010<sub>2</sub> = 1×2³ + 0×2² + 1×2¹ + 0×2⁰</code>
+                </div>
+                <div class="number-system">
+                  <h5>Octal (Base 8)</h5>
+                  <p>Dígitos: 0-7</p>
+                  <code>12<sub>8</sub> = 1×8¹ + 2×8⁰</code>
+                </div>
+                <div class="number-system">
+                  <h5>Hexadecimal (Base 16)</h5>
+                  <p>Dígitos: 0-9, A-F</p>
+                  <code>A3<sub>16</sub> = 10×16¹ + 3×16⁰</code>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card interactive-card" onclick="toggleCard(this)">
+            <div class="card-header">
+              <h4>2.2 Conversión entre Sistemas</h4>
+              <span class="toggle-icon">+</span>
+            </div>
+            <div class="card-content">
+              <div class="conversion-methods">
+                <div class="method">
+                  <h5>Decimal a Binario</h5>
+                  <p>División sucesiva entre 2</p>
+                  <code>13<sub>10</sub> = 1101<sub>2</sub></code>
+                </div>
+                <div class="method">
+                  <h5>Binario a Decimal</h5>
+                  <p>Suma de potencias de 2</p>
+                  <code>1101<sub>2</sub> = 8+4+0+1 = 13<sub>10</sub></code>
+                </div>
+                <div class="method">
+                  <h5>Binario a Hexadecimal</h5>
+                  <p>Agrupar en nibbles (4 bits)</p>
+                  <code>1101 1010<sub>2</sub> = DA<sub>16</sub></code>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="aritmetica">
+          <div class="section-header">
+            <h3>Aritmética Computacional</h3>
+            <span class="badge">Cálculos</span>
+          </div>
+
+          <div class="card interactive-card" onclick="toggleCard(this)">
+            <div class="card-header">
+              <h4>2.3 Representación de Enteros con Signo</h4>
+              <span class="toggle-icon">+</span>
+            </div>
+            <div class="card-content">
+              <div class="tab-container">
+                <div class="tab-buttons">
+                  <button class="tab-button active" onclick="openTab(event, 'sign-magnitude')">Signo-Magnitud</button>
+                  <button class="tab-button" onclick="openTab(event, 'complement1')">Complemento a 1</button>
+                  <button class="tab-button" onclick="openTab(event, 'complement2')">Complemento a 2</button>
+                </div>
+                
+                <div id="sign-magnitude" class="tab-content active">
+                  <p><strong>Bit más significativo = signo</strong> (0=+, 1=-)</p>
+                  <p><strong>Ventajas:</strong> Fácil de entender</p>
+                  <p><strong>Desventajas:</strong> Dos ceros, operaciones complejas</p>
+                  <code>+5 = 00000101, -5 = 10000101</code>
+                </div>
+                
+                <div id="complement1" class="tab-content">
+                  <p><strong>Inversión bit a bit</strong> para negativos</p>
+                  <p><strong>Ventajas:</strong> Más simple que signo-magnitud</p>
+                  <p><strong>Desventajas:</strong> Sigue teniendo dos ceros</p>
+                  <code>+5 = 00000101, -5 = 11111010</code>
+                </div>
+                
+                <div id="complement2" class="tab-content">
+                  <p><strong>Complemento a 1 + 1</strong>, estándar actual</p>
+                  <p><strong>Ventajas:</strong> Un solo cero, operaciones simples</p>
+                  <p><strong>Desventajas:</strong> Rango asimétrico</p>
+                  <code>+5 = 00000101, -5 = 11111011</code>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card interactive-card" onclick="toggleCard(this)">
+            <div class="card-header">
+              <h4>2.4 Aritmética de Punto Flotante</h4>
+              <span class="toggle-icon">+</span>
+            </div>
+            <div class="card-content">
+              <p>Representación de números reales usando notación científica:</p>
+              <p><strong>Formato:</strong> Número = mantisa × BASE<sup>exponente</sup></p>
+              
+              <div class="floating-point">
+                <div class="fp-format">
+                  <h5>IEEE 754 Simple Precisión (32 bits)</h5>
+                  <div class="bit-breakdown">
+                    <div class="bit-segment sign">1 bit</div>
+                    <div class="bit-segment exponent">8 bits</div>
+                    <div class="bit-segment mantissa">23 bits</div>
+                  </div>
+                  <p>Signo | Exponente (sesgado) | Mantisa (normalizada)</p>
+                </div>
+                <div class="fp-format">
+                  <h5>IEEE 754 Doble Precisión (64 bits)</h5>
+                  <div class="bit-breakdown">
+                    <div class="bit-segment sign">1 bit</div>
+                    <div class="bit-segment exponent">11 bits</div>
+                    <div class="bit-segment mantissa">52 bits</div>
+                  </div>
+                  <p>Mayor precisión para cálculos científicos</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card interactive-card" onclick="toggleCard(this)">
+            <div class="card-header">
+              <h4>2.5 Otros Formatos de Datos</h4>
+              <span class="toggle-icon">+</span>
+            </div>
+            <div class="card-content">
+              <div class="data-formats">
+                <div class="format">
+                  <h5>BCD (Binary Coded Decimal)</h5>
+                  <p>4 bits por dígito decimal</p>
+                  <code>123 = 0001 0010 0011</code>
+                </div>
+                <div class="format">
+                  <h5>Código Gray</h5>
+                  <p>Un solo bit cambia entre números consecutivos</p>
+                  <code>00, 01, 11, 10</code>
+                </div>
+                <div class="format">
+                  <h5>Caracteres (ASCII/Unicode)</h5>
+                  <p>Representación de texto</p>
+                  <code>'A' = 65 (ASCII), 'A' = U+0041 (Unicode)</code>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="calculadora">
+          <div class="section-header">
+            <h3>Calculadora de Conversiones</h3>
+            <span class="badge interactive">Herramienta</span>
+          </div>
+
+          <div class="card">
+            <h4>Conversor de Bases Numéricas</h4>
+            <div class="converter-tool">
+              <div class="input-group">
+                <label>Valor:</label>
+                <input type="text" id="inputValue" placeholder="Ingresa un número">
+              </div>
+              <div class="input-group">
+                <label>De base:</label>
+                <select id="fromBase">
+                  <option value="2">Binario (2)</option>
+                  <option value="10" selected>Decimal (10)</option>
+                  <option value="8">Octal (8)</option>
+                  <option value="16">Hexadecimal (16)</option>
+                </select>
+              </div>
+              <button class="btn" onclick="convertNumber()">Convertir</button>
+              
+              <div id="conversionResults" class="conversion-results">
+                <div class="result-item">
+                  <span>Binario:</span>
+                  <span id="binaryResult">-</span>
+                </div>
+                <div class="result-item">
+                  <span>Decimal:</span>
+                  <span id="decimalResult">-</span>
+                </div>
+                <div class="result-item">
+                  <span>Octal:</span>
+                  <span id="octalResult">-</span>
+                </div>
+                <div class="result-item">
+                  <span>Hexadecimal:</span>
+                  <span id="hexResult">-</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <aside>
+        <div class="section-header"><h3>Progreso Unidad 2</h3></div>
+        <div class="progress-card">
+          <div class="progress-circle">
+            <svg width="100" height="100">
+              <circle cx="50" cy="50" r="40" stroke="#333" stroke-width="8" fill="none"></circle>
+              <circle cx="50" cy="50" r="40" stroke="#00fff0" stroke-width="8" fill="none" 
+                      stroke-dasharray="251.2" stroke-dashoffset="0" class="progress-ring"></circle>
+            </svg>
+            <div class="progress-text">100%</div>
+          </div>
+          <div class="progress-stats">
+            <div class="stat">
+              <span class="stat-label">Temas Completados</span>
+              <span class="stat-value">5/5</span>
+            </div>
+            <div class="stat">
+              <span class="stat-label">Herramientas</span>
+              <span class="stat-value">1/1</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-header"><h3>Tabla de Conversión Rápida</h3></div>
+        <div class="conversion-table">
+          <table>
+            <tr><th>Decimal</th><th>Binario</th><th>Hex</th></tr>
+            <tr><td>0</td><td>0000</td><td>0</td></tr>
+            <tr><td>1</td><td>0001</td><td>1</td></tr>
+            <tr><td>2</td><td>0010</td><td>2</td></tr>
+            <tr><td>3</td><td>0011</td><td>3</td></tr>
+            <tr><td>4</td><td>0100</td><td>4</td></tr>
+            <tr><td>5</td><td>0101</td><td>5</td></tr>
+            <tr><td>6</td><td>0110</td><td>6</td></tr>
+            <tr><td>7</td><td>0111</td><td>7</td></tr>
+            <tr><td>8</td><td>1000</td><td>8</td></tr>
+            <tr><td>9</td><td>1001</td><td>9</td></tr>
+            <tr><td>10</td><td>1010</td><td>A</td></tr>
+          </table>
+        </div>
+
+        <div class="section-header"><h3>Próxima Unidad</h3></div>
+        <a href="unidad3.html" class="unit-card">
+          <div class="unit-icon">📋</div>
+          <h4>Unidad 3</h4>
+          <p>Conjunto de Instrucciones</p>
+          <div class="unit-progress">
+            <div class="progress-bar" style="width: 0%"></div>
+          </div>
+        </a>
+      </aside>
+    </div>
+
+    <footer>
+      <div>
+        <a href="unidad1.html" class="btn">⬅️ Unidad Anterior</a>
+        <a href="unidad3.html" class="btn">➡️ Siguiente Unidad</a>
+      </div>
+      <small>Unidad 2 - Representación de Datos</small>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    // Conversor de números
+    function convertNumber() {
+      const input = document.getElementById('inputValue').value;
+      const fromBase = parseInt(document.getElementById('fromBase').value);
+      
+      if (!input) {
+        alert('Por favor ingresa un valor');
+        return;
+      }
+
+      try {
+        // Convertir a decimal primero
+        const decimalValue = parseInt(input, fromBase);
+        
+        if (isNaN(decimalValue)) {
+          throw new Error('Valor inválido para la base seleccionada');
+        }
+
+        // Mostrar conversiones
+        document.getElementById('binaryResult').textContent = decimalValue.toString(2);
+        document.getElementById('decimalResult').textContent = decimalValue.toString(10);
+        document.getElementById('octalResult').textContent = decimalValue.toString(8);
+        document.getElementById('hexResult').textContent = decimalValue.toString(16).toUpperCase();
+        
+      } catch (error) {
+        alert('Error en la conversión: ' + error.message);
+      }
+    }
+
+    // Estilos adicionales para la unidad 2
+    const style = document.createElement('style');
+    style.textContent = `
+      .conversion-methods {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+        margin-top: 15px;
+      }
+      .method {
+        background: rgba(0,0,0,0.2);
+        padding: 15px;
+        border-radius: 8px;
+        border: 1px solid rgba(255,255,255,0.1);
+      }
+      .method h5 {
+        color: var(--neon-cyan);
+        margin-bottom: 10px;
+      }
+      .floating-point {
+        margin-top: 15px;
+      }
+      .fp-format {
+        background: rgba(0,0,0,0.2);
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 15px;
+        border: 1px solid rgba(255,255,255,0.1);
+      }
+      .bit-breakdown {
+        display: flex;
+        margin: 10px 0;
+      }
+      .bit-segment {
+        padding: 8px;
+        text-align: center;
+        border: 1px solid rgba(255,255,255,0.2);
+      }
+      .sign { background: rgba(255,0,209,0.1); flex: 1; }
+      .exponent { background: rgba(0,255,240,0.1); flex: 2; }
+      .mantissa { background: rgba(183,255,0,0.1); flex: 5; }
+      .data-formats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+        margin-top: 15px;
+      }
+      .format {
+        background: rgba(0,0,0,0.2);
+        padding: 15px;
+        border-radius: 8px;
+        border: 1px solid rgba(255,255,255,0.1);
+      }
+      .converter-tool {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+      .input-group {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+      }
+      .input-group label {
+        font-weight: 600;
+        color: var(--neon-cyan);
+      }
+      .input-group input, .input-group select {
+        padding: 8px;
+        border-radius: 6px;
+        border: 1px solid rgba(255,255,255,0.2);
+        background: rgba(0,0,0,0.3);
+        color: white;
+      }
+      .conversion-results {
+        margin-top: 15px;
+      }
+      .result-item {
+        display: flex;
+        justify-content: space-between;
+        padding: 8px;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+      }
+      .result-item:last-child {
+        border-bottom: none;
+      }
+      .conversion-table {
+        background: rgba(0,0,0,0.2);
+        border-radius: 8px;
+        overflow: hidden;
+      }
+      .conversion-table table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      .conversion-table th, .conversion-table td {
+        padding: 8px;
+        text-align: center;
+        border: 1px solid rgba(255,255,255,0.1);
+      }
+      .conversion-table th {
+        background: rgba(0,255,240,0.1);
+        color: var(--neon-cyan);
+      }
+    `;
+    document.head.appendChild(style);
+  </script>
+</body>
+</html>

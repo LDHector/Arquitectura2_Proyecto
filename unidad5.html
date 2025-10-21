@@ -1,0 +1,520 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Unidad 5 - Unidad de Control</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo"><h1>AM</h1></div>
+        <div>
+          <h2 class="title">Unidad 5: Unidad de Control</h2>
+          <small style="color:#9fb8ff">Coordinación y secuenciación de operaciones</small>
+        </div>
+      </div>
+      <nav>
+        <div class="menu">
+          <a href="index.html" class="btn">🏠 Inicio</a>
+          <a href="unidad4.html" class="btn">⬅️ Unidad 4</a>
+          <button class="btn" onclick="scrollToSection('ciclo')">🔄 Ciclo</button>
+          <button class="btn" onclick="scrollToSection('implementacion')">⚡ Implementación</button>
+        </div>
+      </nav>
+    </header>
+
+    <div class="grid">
+      <main>
+        <section id="ciclo">
+          <div class="section-header">
+            <h3>Ciclo de Instrucción</h3>
+            <span class="badge">Secuencia</span>
+          </div>
+
+          <div class="card interactive-card" onclick="toggleCard(this)">
+            <div class="card-header">
+              <h4>5.1 Fases del Ciclo</h4>
+              <span class="toggle-icon">+</span>
+            </div>
+            <div class="card-content">
+              <div class="instruction-cycle">
+                <div class="cycle-phase">
+                  <h5>1. Fetch (Búsqueda)</h5>
+                  <ul>
+                    <li>PC → MAR</li>
+                    <li>Leer memoria → MDR</li>
+                    <li>MDR → IR</li>
+                    <li>PC ← PC + 1</li>
+                  </ul>
+                </div>
+                <div class="cycle-phase">
+                  <h5>2. Decode (Decodificación)</h5>
+                  <ul>
+                    <li>Interpretar OPCODE</li>
+                    <li>Identificar operandos</li>
+                    <li>Determinar modo direccionamiento</li>
+                  </ul>
+                </div>
+                <div class="cycle-phase">
+                  <h5>3. Execute (Ejecución)</h5>
+                  <ul>
+                    <li>ALU realiza operación</li>
+                    <li>Acceso a memoria si es necesario</li>
+                    <li>Cálculo de direcciones efectivas</li>
+                  </ul>
+                </div>
+                <div class="cycle-phase">
+                  <h5>4. Store (Almacenamiento)</h5>
+                  <ul>
+                    <li>Guardar resultado</li>
+                    <li>Actualizar registros</li>
+                    <li>Verificar interrupciones</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card interactive-card" onclick="toggleCard(this)">
+            <div class="card-header">
+              <h4>5.2 Señales de Control</h4>
+              <span class="toggle-icon">+</span>
+            </div>
+            <div class="card-content">
+              <div class="control-signals">
+                <div class="signal-category">
+                  <h5>Control de Memoria</h5>
+                  <ul>
+                    <li>MemRead / MemWrite</li>
+                    <li>MARLoad / MDRLoad</li>
+                    <li>IROut / IRLoad</li>
+                  </ul>
+                </div>
+                <div class="signal-category">
+                  <h5>Control de ALU</h5>
+                  <ul>
+                    <li>ALUOp (código operación)</li>
+                    <li>ALUSrcA / ALUSrcB</li>
+                    <li>ALUOutEnable</li>
+                  </ul>
+                </div>
+                <div class="signal-category">
+                  <h5>Control de Registros</h5>
+                  <ul>
+                    <li>RegWrite</li>
+                    <li>RegDst</li>
+                    <li>RegSrc</li>
+                  </ul>
+                </div>
+                <div class="signal-category">
+                  <h5>Control de PC</h5>
+                  <ul>
+                    <li>PCLoad</li>
+                    <li>PCInc</li>
+                    <li>PCSrc</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="implementacion">
+          <div class="section-header">
+            <h3>Implementación de la UC</h3>
+            <span class="badge">Diseño</span>
+          </div>
+
+          <div class="card interactive-card" onclick="toggleCard(this)">
+            <div class="card-header">
+              <h4>5.3 Control Cableado</h4>
+              <span class="toggle-icon">+</span>
+            </div>
+            <div class="card-content">
+              <div class="hardwired-control">
+                <div class="control-feature">
+                  <h5>Ventajas</h5>
+                  <ul>
+                    <li>Alta velocidad</li>
+                    <li>Eficiente para instrucciones simples</li>
+                    <li>Bajo costo en diseños simples</li>
+                  </ul>
+                </div>
+                <div class="control-feature">
+                  <h5>Desventajas</h5>
+                  <ul>
+                    <li>Poco flexible</li>
+                    <li>Difícil de modificar</li>
+                    <li>Complejo para instrucciones complejas</li>
+                  </ul>
+                </div>
+                <div class="control-feature">
+                  <h5>Aplicaciones</h5>
+                  <ul>
+                    <li>RISC processors</li>
+                    <li>Controladores simples</li>
+                    <li>Sistemas embebidos</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card interactive-card" onclick="toggleCard(this)">
+            <div class="card-header">
+              <h4>5.4 Microprogramación</h4>
+              <span class="toggle-icon">+</span>
+            </div>
+            <div class="card-content">
+              <div class="microprogrammed-control">
+                <div class="micro-feature">
+                  <h5>Ventajas</h5>
+                  <ul>
+                    <li>Muy flexible</li>
+                    <li>Fácil de modificar y extender</li>
+                    <li>Ideal para CISC</li>
+                    <li>Facilita debugging</li>
+                  </ul>
+                </div>
+                <div class="micro-feature">
+                  <h5>Desventajas</h5>
+                  <ul>
+                    <li>Más lento que cableado</li>
+                    <li>Requiere memoria de control</li>
+                    <li>Mayor complejidad</li>
+                  </ul>
+                </div>
+                <div class="micro-feature">
+                  <h5>Componentes</h5>
+                  <ul>
+                    <li>Memoria de Control</li>
+                    <li>MicroPC (μPC)</li>
+                    <li>Secuenciador</li>
+                    <li>Palabra de Control</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="simulador">
+          <div class="section-header">
+            <h3>Simulador de Ciclo de Instrucción</h3>
+            <span class="badge interactive">Práctica</span>
+          </div>
+
+          <div class="card">
+            <h4>Ejecución Paso a Paso</h4>
+            <div class="cycle-simulator">
+              <div class="cpu-state">
+                <h5>Estado del CPU</h5>
+                <div class="state-registers">
+                  <div class="state-register"><span>PC:</span><span id="statePC">0</span></div>
+                  <div class="state-register"><span>IR:</span><span id="stateIR">00000000</span></div>
+                  <div class="state-register"><span>MAR:</span><span id="stateMAR">0</span></div>
+                  <div class="state-register"><span>MDR:</span><span id="stateMDR">0</span></div>
+                </div>
+              </div>
+
+              <div class="control-signals-display">
+                <h5>Señales de Control Activas</h5>
+                <div class="signals-grid" id="activeSignals">
+                  <!-- Las señales se mostrarán aquí dinámicamente -->
+                </div>
+              </div>
+
+              <div class="cycle-controls">
+                <h5>Control de Ejecución</h5>
+                <div class="control-buttons">
+                  <button class="btn" onclick="executeCycleStep()">Ejecutar Paso</button>
+                  <button class="btn" onclick="resetCycle()">Reiniciar</button>
+                  <button class="btn" onclick="runCompleteCycle()">Ciclo Completo</button>
+                </div>
+                <div class="current-phase">
+                  <span>Fase Actual: </span>
+                  <span id="currentPhase">-</span>
+                </div>
+              </div>
+
+              <div class="program-trace">
+                <h5>Traza de Ejecución</h5>
+                <div class="trace-log" id="traceLog">
+                  <!-- Log de ejecución -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <aside>
+        <div class="section-header"><h3>Progreso Unidad 5</h3></div>
+        <div class="progress-card">
+          <div class="progress-circle">
+            <svg width="100" height="100">
+              <circle cx="50" cy="50" r="40" stroke="#333" stroke-width="8" fill="none"></circle>
+              <circle cx="50" cy="50" r="40" stroke="#00fff0" stroke-width="8" fill="none" 
+                      stroke-dasharray="251.2" stroke-dashoffset="125.6" class="progress-ring"></circle>
+            </svg>
+            <div class="progress-text">50%</div>
+          </div>
+          <div class="progress-stats">
+            <div class="stat">
+              <span class="stat-label">Temas Completados</span>
+              <span class="stat-value">4/4</span>
+            </div>
+            <div class="stat">
+              <span class="stat-label">Simulador</span>
+              <span class="stat-value">1/1</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-header"><h3>Señales Comunes</h3></div>
+        <div class="signals-reference">
+          <div class="signal-item">
+            <span class="signal">MemRead</span>
+            <span class="signal-desc">Lectura de memoria</span>
+          </div>
+          <div class="signal-item">
+            <span class="signal">MemWrite</span>
+            <span class="signal-desc">Escritura en memoria</span>
+          </div>
+          <div class="signal-item">
+            <span class="signal">RegWrite</span>
+            <span class="signal-desc">Escritura en registro</span>
+          </div>
+          <div class="signal-item">
+            <span class="signal">ALUOp</span>
+            <span class="signal-desc">Operación ALU</span>
+          </div>
+          <div class="signal-item">
+            <span class="signal">PCSrc</span>
+            <span class="signal-desc">Fuente del PC</span>
+          </div>
+        </div>
+
+        <div class="section-header"><h3>Próxima Unidad</h3></div>
+        <a href="unidad6.html" class="unit-card">
+          <div class="unit-icon">💾</div>
+          <h4>Unidad 6</h4>
+          <p>Sistema de Memoria</p>
+          <div class="unit-progress">
+            <div class="progress-bar" style="width: 0%"></div>
+          </div>
+        </a>
+      </aside>
+    </div>
+
+    <footer>
+      <div>
+        <a href="unidad4.html" class="btn">⬅️ Unidad Anterior</a>
+        <a href="unidad6.html" class="btn">➡️ Siguiente Unidad</a>
+      </div>
+      <small>Unidad 5 - Unidad de Control</small>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    // Simulador de ciclo de instrucción
+    let cpuState = {
+      PC: 0,
+      IR: 0,
+      MAR: 0,
+      MDR: 0,
+      currentPhase: 'fetch',
+      cycleStep: 0
+    };
+
+    const programMemory = {
+      0: 0b00010001, // MOV R1, #1
+      1: 0b00100010, // MOV R2, #2
+      2: 0b00110011, // ADD R3, R1, R2
+      3: 0b11111111  // HALT
+    };
+
+    const controlSignals = {
+      fetch: ['PCOut', 'MARLoad', 'MemRead', 'MDRLoad', 'IRLoad', 'PCInc'],
+      decode: ['IROut', 'ControlDecode'],
+      execute: ['RegAOut', 'RegBOut', 'ALUOp', 'ALUOutEnable'],
+      store: ['RegWrite', 'RegDst']
+    };
+
+    function executeCycleStep() {
+      const phase = cpuState.currentPhase;
+      const signals = controlSignals[phase];
+      
+      // Actualizar display de señales
+      const signalsGrid = document.getElementById('activeSignals');
+      signalsGrid.innerHTML = '';
+      signals.forEach(signal => {
+        const signalElement = document.createElement('div');
+        signalElement.className = 'signal-active';
+        signalElement.textContent = signal;
+        signalsGrid.appendChild(signalElement);
+      });
+
+      // Actualizar estado
+      document.getElementById('currentPhase').textContent = phase.toUpperCase();
+      
+      // Simular acciones de la fase
+      switch(phase) {
+        case 'fetch':
+          cpuState.MAR = cpuState.PC;
+          cpuState.MDR = programMemory[cpuState.PC] || 0;
+          cpuState.IR = cpuState.MDR;
+          cpuState.PC++;
+          addToTrace(`FETCH: PC=${cpuState.PC-1} -> IR=${cpuState.IR.toString(2).padStart(8, '0')}`);
+          break;
+        case 'decode':
+          addToTrace(`DECODE: Instrucción ${cpuState.IR.toString(2).padStart(8, '0')}`);
+          break;
+        case 'execute':
+          addToTrace('EXECUTE: Operación en ALU');
+          break;
+        case 'store':
+          addToTrace('STORE: Resultado guardado');
+          break;
+      }
+
+      // Avanzar a la siguiente fase
+      const phases = ['fetch', 'decode', 'execute', 'store'];
+      const currentIndex = phases.indexOf(phase);
+      cpuState.currentPhase = phases[(currentIndex + 1) % phases.length];
+      
+      // Actualizar display de estado
+      updateStateDisplay();
+    }
+
+    function runCompleteCycle() {
+      for(let i = 0; i < 4; i++) {
+        executeCycleStep();
+      }
+    }
+
+    function resetCycle() {
+      cpuState = {
+        PC: 0,
+        IR: 0,
+        MAR: 0,
+        MDR: 0,
+        currentPhase: 'fetch',
+        cycleStep: 0
+      };
+      document.getElementById('traceLog').innerHTML = '';
+      document.getElementById('activeSignals').innerHTML = '';
+      document.getElementById('currentPhase').textContent = '-';
+      updateStateDisplay();
+    }
+
+    function addToTrace(message) {
+      const traceLog = document.getElementById('traceLog');
+      const entry = document.createElement('div');
+      entry.className = 'trace-entry';
+      entry.textContent = `[${new Date().toLocaleTimeString()}] ${message}`;
+      traceLog.appendChild(entry);
+      traceLog.scrollTop = traceLog.scrollHeight;
+    }
+
+    function updateStateDisplay() {
+      document.getElementById('statePC').textContent = cpuState.PC;
+      document.getElementById('stateIR').textContent = cpuState.IR.toString(2).padStart(8, '0');
+      document.getElementById('stateMAR').textContent = cpuState.MAR;
+      document.getElementById('stateMDR').textContent = cpuState.MDR;
+    }
+
+    // Estilos adicionales para la unidad 5
+    const style = document.createElement('style');
+    style.textContent = `
+      .instruction-cycle, .control-signals, .hardwired-control, .microprogrammed-control {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+        margin-top: 15px;
+      }
+      .cycle-phase, .signal-category, .control-feature, .micro-feature {
+        background: rgba(0,0,0,0.2);
+        padding: 15px;
+        border-radius: 8px;
+        border: 1px solid rgba(255,255,255,0.1);
+      }
+      .cycle-simulator {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+      .cpu-state, .control-signals-display, .cycle-controls, .program-trace {
+        background: rgba(0,0,0,0.2);
+        padding: 15px;
+        border-radius: 8px;
+        border: 1px solid rgba(255,255,255,0.1);
+      }
+      .state-registers, .signals-grid, .control-buttons, .trace-log {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 10px;
+        margin-top: 10px;
+      }
+      .state-register, .signal-active, .trace-entry {
+        padding: 8px;
+        background: rgba(255,255,255,0.05);
+        border-radius: 4px;
+        text-align: center;
+      }
+      .signal-active {
+        background: rgba(0,255,240,0.2);
+        color: var(--neon-cyan);
+        font-weight: 600;
+      }
+      .current-phase {
+        margin-top: 10px;
+        padding: 10px;
+        background: rgba(155,107,255,0.1);
+        border-radius: 4px;
+        text-align: center;
+        font-weight: 600;
+      }
+      .trace-log {
+        display: flex;
+        flex-direction: column;
+        max-height: 200px;
+        overflow-y: auto;
+      }
+      .trace-entry {
+        text-align: left;
+        font-size: 0.8rem;
+        padding: 5px;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+      }
+      .signals-reference {
+        background: rgba(0,0,0,0.2);
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        border: 1px solid rgba(255,255,255,0.1);
+      }
+      .signal-item {
+        display: flex;
+        justify-content: space-between;
+        padding: 8px;
+        margin-bottom: 5px;
+        background: rgba(255,255,255,0.05);
+        border-radius: 4px;
+      }
+      .signal {
+        color: var(--neon-cyan);
+        font-weight: 600;
+      }
+    `;
+    document.head.appendChild(style);
+  </script>
+</body>
+</html>

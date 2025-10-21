@@ -1,0 +1,604 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Unidad 7 - Entrada/Salida</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo"><h1>AM</h1></div>
+        <div>
+          <h2 class="title">Unidad 7: Sistema de Entrada/Salida</h2>
+          <small style="color:#9fb8ff">Buses, interrupciones y transferencias de datos</small>
+        </div>
+      </div>
+      <nav>
+        <div class="menu">
+          <a href="index.html" class="btn">🏠 Inicio</a>
+          <a href="unidad6.html" class="btn">⬅️ Unidad 6</a>
+          <button class="btn" onclick="scrollToSection('buses')">🔌 Buses</button>
+          <button class="btn" onclick="scrollToSection('transferencias')">🔄 Transferencias</button>
+        </div>
+      </nav>
+    </header>
+
+    <div class="grid">
+      <main>
+        <section id="buses">
+          <div class="section-header">
+            <h3>Sistema de Buses</h3>
+            <span class="badge">Comunicación</span>
+          </div>
+
+          <div class="card interactive-card" onclick="toggleCard(this)">
+            <div class="card-header">
+              <h4>7.1 Tipos de Buses</h4>
+              <span class="toggle-icon">+</span>
+            </div>
+            <div class="card-content">
+              <div class="bus-types">
+                <div class="bus-type">
+                  <h5>Bus de Datos</h5>
+                  <ul>
+                    <li><strong>Función:</strong> Transferir datos</li>
+                    <li><strong>Ancho:</strong> 8, 16, 32, 64 bits</li>
+                    <li><strong>Ejemplo:</strong> D0-D63</li>
+                    <li><strong>Característica:</strong> Bidireccional</li>
+                  </ul>
+                </div>
+                <div class="bus-type">
+                  <h5>Bus de Direcciones</h5>
+                  <ul>
+                    <li><strong>Función:</strong> Especificar ubicación</li>
+                    <li><strong>Ancho:</strong> 16, 20, 32, 64 bits</li>
+                    <li><strong>Ejemplo:</strong> A0-A31</li>
+                    <li><strong>Característica:</strong> Unidireccional</li>
+                  </ul>
+                </div>
+                <div class="bus-type">
+                  <h5>Bus de Control</h5>
+                  <ul>
+                    <li><strong>Función:</strong> Señales de control</li>
+                    <li><strong>Señales:</strong> Read, Write, Interrupt</li>
+                    <li><strong>Ejemplo:</strong> MEMR#, MEMW#</li>
+                    <li><strong>Característica:</strong> Varias direcciones</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card interactive-card" onclick="toggleCard(this)">
+            <div class="card-header">
+              <h4>7.2 Estándares de Buses</h4>
+              <span class="toggle-icon">+</span>
+            </div>
+            <div class="card-content">
+              <div class="bus-standards">
+                <div class="standard">
+                  <h5>PCI Express</h5>
+                  <div class="standard-info">
+                    <p><strong>Velocidad:</strong> Hasta 16 GT/s</p>
+                    <p><strong>Ancho:</strong> x1, x4, x8, x16</p>
+                    <p><strong>Uso:</strong> Tarjetas de expansión</p>
+                    <p><strong>Característica:</strong> Serial punto a punto</p>
+                  </div>
+                </div>
+                <div class="standard">
+                  <h5>USB</h5>
+                  <div class="standard-info">
+                    <p><strong>Velocidad:</strong> Hasta 20 Gbps</p>
+                    <p><strong>Versiones:</strong> 2.0, 3.0, 3.1, 3.2</p>
+                    <p><strong>Uso:</strong> Periféricos externos</p>
+                    <p><strong>Característica:</strong> Plug and Play</p>
+                  </div>
+                </div>
+                <div class="standard">
+                  <h5>SATA</h5>
+                  <div class="standard-info">
+                    <p><strong>Velocidad:</strong> Hasta 6 Gbps</p>
+                    <p><strong>Versiones:</strong> SATA I, II, III</p>
+                    <p><strong>Uso:</strong> Discos duros, SSD</p>
+                    <p><strong>Característica:</strong> Serial ATA</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="transferencias">
+          <div class="section-header">
+            <h3>Transferencias de Datos</h3>
+            <span class="badge">Comunicación</span>
+          </div>
+
+          <div class="card interactive-card" onclick="toggleCard(this)">
+            <div class="card-header">
+              <h4>7.3 Técnicas de E/S</h4>
+              <span class="toggle-icon">+</span>
+            </div>
+            <div class="card-content">
+              <div class="io-techniques">
+                <div class="technique">
+                  <h5>E/S Programada (Polling)</h5>
+                  <ul>
+                    <li><strong>Funcionamiento:</strong> CPU verifica estado</li>
+                    <li><strong>Ventaja:</strong> Simple de implementar</li>
+                    <li><strong>Desventaja:</strong> Consume tiempo CPU</li>
+                    <li><strong>Uso:</strong> Dispositivos lentos</li>
+                  </ul>
+                </div>
+                <div class="technique">
+                  <h5>E/S por Interrupciones</h5>
+                  <ul>
+                    <li><strong>Funcionamiento:</strong> Dispositivo avisa</li>
+                    <li><strong>Ventaja:</strong> Eficiente</li>
+                    <li><strong>Desventaja:</strong> Complejidad</li>
+                    <li><strong>Uso:</strong> Dispositivos de velocidad media</li>
+                  </ul>
+                </div>
+                <div class="technique">
+                  <h5>DMA (Acceso Directo a Memoria)</h5>
+                  <ul>
+                    <li><strong>Funcionamiento:</strong> Controlador DMA</li>
+                    <li><strong>Ventaja:</strong> Libera al CPU</li>
+                    <li><strong>Desventaja:</strong> Hardware adicional</li>
+                    <li><strong>Uso:</strong> Transferencias grandes</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card interactive-card" onclick="toggleCard(this)">
+            <div class="card-header">
+              <h4>7.4 Manejo de Interrupciones</h4>
+              <span class="toggle-icon">+</span>
+            </div>
+            <div class="card-content">
+              <div class="interrupt-handling">
+                <div class="interrupt-step">
+                  <h5>1. Solicitud</h5>
+                  <p>Dispositivo activa línea IRQ</p>
+                  <code>IRQx = 1</code>
+                </div>
+                <div class="interrupt-step">
+                  <h5>2. Reconocimiento</h5>
+                  <p>CPU termina instrucción actual</p>
+                  <code>IF = 0 (deshabilitar interrupciones)</code>
+                </div>
+                <div class="interrupt-step">
+                  <h5>3. Identificación</h5>
+                  <p>Determinar fuente de interrupción</p>
+                  <code>Leer vector de interrupción</code>
+                </div>
+                <div class="interrupt-step">
+                  <h5>4. Servicio</h5>
+                  <p>Ejecutar rutina de servicio (ISR)</p>
+                  <code>Salvar contexto → Ejecutar ISR → Restaurar contexto</code>
+                </div>
+              </div>
+              
+              <div class="interrupt-types">
+                <h5>Tipos de Interrupciones</h5>
+                <div class="type-list">
+                  <div class="type-item">
+                    <span class="type-name">Hardware</span>
+                    <span class="type-desc">Dispositivos externos</span>
+                  </div>
+                  <div class="type-item">
+                    <span class="type-name">Software</span>
+                    <span class="type-desc">Instrucciones INT</span>
+                  </div>
+                  <div class="type-item">
+                    <span class="type-name">Excepciones</span>
+                    <span class="type-desc">Errores de programa</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="simulador">
+          <div class="section-header">
+            <h3>Simulador de E/S</h3>
+            <span class="badge interactive">Práctica</span>
+          </div>
+
+          <div class="card">
+            <h4>Simulador de Transferencias</h4>
+            <div class="io-simulator">
+              <div class="simulator-config">
+                <div class="config-group">
+                  <label>Técnica de E/S:</label>
+                  <select id="ioTechnique">
+                    <option value="polling">Polling</option>
+                    <option value="interrupt">Interrupciones</option>
+                    <option value="dma">DMA</option>
+                  </select>
+                </div>
+                <div class="config-group">
+                  <label>Dispositivo:</label>
+                  <select id="deviceType">
+                    <option value="keyboard">Teclado</option>
+                    <option value="disk">Disco</option>
+                    <option value="network">Red</option>
+                  </select>
+                </div>
+                <div class="config-group">
+                  <label>Tamaño Datos:</label>
+                  <input type="number" id="dataSize" value="1024" min="1" max="65536">
+                </div>
+                <button class="btn" onclick="startIOSimulation()">Iniciar Simulación</button>
+              </div>
+
+              <div class="simulation-progress">
+                <h5>Progreso de Transferencia</h5>
+                <div class="progress-bar-container">
+                  <div class="progress-bar" id="transferProgress" style="width: 0%"></div>
+                </div>
+                <div class="progress-stats">
+                  <span id="progressText">0%</span>
+                  <span id="transferSpeed">0 KB/s</span>
+                </div>
+              </div>
+
+              <div class="system-status">
+                <h5>Estado del Sistema</h5>
+                <div class="status-grid">
+                  <div class="status-item">
+                    <span>CPU Usage:</span>
+                    <span id="cpuUsage">0%</span>
+                  </div>
+                  <div class="status-item">
+                    <span>DMA Active:</span>
+                    <span id="dmaStatus">No</span>
+                  </div>
+                  <div class="status-item">
+                    <span>Interrupts:</span>
+                    <span id="interruptCount">0</span>
+                  </div>
+                  <div class="status-item">
+                    <span>Data Transferred:</span>
+                    <span id="dataTransferred">0 bytes</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="event-log">
+                <h5>Log de Eventos</h5>
+                <div class="log-container" id="eventLog">
+                  <!-- Eventos se mostrarán aquí -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <aside>
+        <div class="section-header"><h3>Progreso Unidad 7</h3></div>
+        <div class="progress-card">
+          <div class="progress-circle">
+            <svg width="100" height="100">
+              <circle cx="50" cy="50" r="40" stroke="#333" stroke-width="8" fill="none"></circle>
+              <circle cx="50" cy="50" r="40" stroke="#00fff0" stroke-width="8" fill="none" 
+                      stroke-dasharray="251.2" stroke-dashoffset="50.24" class="progress-ring"></circle>
+            </svg>
+            <div class="progress-text">80%</div>
+          </div>
+          <div class="progress-stats">
+            <div class="stat">
+              <span class="stat-label">Temas Completados</span>
+              <span class="stat-value">4/4</span>
+            </div>
+            <div class="stat">
+              <span class="stat-label">Simulador</span>
+              <span class="stat-value">1/1</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-header"><h3>Líneas IRQ Comunes</h3></div>
+        <div class="irq-reference">
+          <div class="irq-item">
+            <span class="irq">IRQ 0</span>
+            <span class="irq-device">Timer del sistema</span>
+          </div>
+          <div class="irq-item">
+            <span class="irq">IRQ 1</span>
+            <span class="irq-device">Teclado</span>
+          </div>
+          <div class="irq-item">
+            <span class="irq">IRQ 4</span>
+            <span class="irq-device">COM1 (Serial)</span>
+          </div>
+          <div class="irq-item">
+            <span class="irq">IRQ 6</span>
+            <span class="irq-device">Unidad de disquete</span>
+          </div>
+          <div class="irq-item">
+            <span class="irq">IRQ 14</span>
+            <span class="irq-device">Controlador IDE</span>
+          </div>
+        </div>
+
+        <div class="section-header"><h3>Curso Completado</h3></div>
+        <div class="completion-card">
+          <div class="completion-icon">🎓</div>
+          <h4>¡Felicidades!</h4>
+          <p>Has completado todas las unidades del curso</p>
+          <a href="index.html" class="btn">Volver al Inicio</a>
+        </div>
+      </aside>
+    </div>
+
+    <footer>
+      <div>
+        <a href="unidad6.html" class="btn">⬅️ Unidad Anterior</a>
+        <a href="index.html" class="btn">🏠 Inicio</a>
+      </div>
+      <small>Unidad 7 - Sistema de Entrada/Salida</small>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    // Simulador de E/S
+    let simulationInterval;
+    let currentProgress = 0;
+    let simulationRunning = false;
+
+    function startIOSimulation() {
+      if (simulationRunning) return;
+      
+      simulationRunning = true;
+      currentProgress = 0;
+      document.getElementById('eventLog').innerHTML = '';
+      
+      const technique = document.getElementById('ioTechnique').value;
+      const device = document.getElementById('deviceType').value;
+      const dataSize = parseInt(document.getElementById('dataSize').value);
+      
+      addEventLog(`Iniciando transferencia: ${technique.toUpperCase()} - ${device} - ${dataSize} bytes`);
+      
+      let speed;
+      switch(technique) {
+        case 'polling':
+          speed = 100; // Más lento
+          addEventLog('CPU monitoreando estado del dispositivo...');
+          break;
+        case 'interrupt':
+          speed = 50;
+          addEventLog('Configurando rutina de interrupción...');
+          break;
+        case 'dma':
+          speed = 10;
+          addEventLog('Inicializando controlador DMA...');
+          break;
+      }
+      
+      simulationInterval = setInterval(() => {
+        currentProgress += speed;
+        if (currentProgress >= 100) {
+          currentProgress = 100;
+          completeSimulation();
+        }
+        
+        updateSimulationDisplay(technique);
+      }, 100);
+    }
+
+    function completeSimulation() {
+      clearInterval(simulationInterval);
+      simulationRunning = false;
+      addEventLog('Transferencia completada exitosamente');
+      document.getElementById('cpuUsage').textContent = '5%';
+      document.getElementById('dmaStatus').textContent = 'No';
+    }
+
+    function updateSimulationDisplay(technique) {
+      // Actualizar barra de progreso
+      document.getElementById('transferProgress').style.width = currentProgress + '%';
+      document.getElementById('progressText').textContent = Math.round(currentProgress) + '%';
+      
+      // Calcular velocidad de transferencia
+      const speed = technique === 'dma' ? '15.2 MB/s' : 
+                   technique === 'interrupt' ? '8.7 MB/s' : '2.1 MB/s';
+      document.getElementById('transferSpeed').textContent = speed;
+      
+      // Actualizar uso de CPU
+      const cpuUsage = technique === 'polling' ? '85%' :
+                      technique === 'interrupt' ? '45%' : '15%';
+      document.getElementById('cpuUsage').textContent = cpuUsage;
+      
+      // Actualizar estado DMA
+      document.getElementById('dmaStatus').textContent = technique === 'dma' && currentProgress > 0 ? 'Sí' : 'No';
+      
+      // Actualizar datos transferidos
+      const dataSize = parseInt(document.getElementById('dataSize').value);
+      const transferred = Math.round(dataSize * currentProgress / 100);
+      document.getElementById('dataTransferred').textContent = transferred + ' bytes';
+      
+      // Actualizar contador de interrupciones
+      if (technique === 'interrupt' && currentProgress % 20 === 0) {
+        const count = Math.floor(currentProgress / 20);
+        document.getElementById('interruptCount').textContent = count;
+        if (count > 0 && count <= 5) {
+          addEventLog(`Interrupción #${count} procesada`);
+        }
+      }
+    }
+
+    function addEventLog(message) {
+      const log = document.getElementById('eventLog');
+      const entry = document.createElement('div');
+      entry.className = 'log-event';
+      entry.textContent = `[${new Date().toLocaleTimeString()}] ${message}`;
+      log.appendChild(entry);
+      log.scrollTop = log.scrollHeight;
+    }
+
+    // Estilos adicionales para la unidad 7
+    const style = document.createElement('style');
+    style.textContent = `
+      .bus-types, .bus-standards, .io-techniques, .interrupt-handling {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+        margin-top: 15px;
+      }
+      .bus-type, .standard, .technique, .interrupt-step {
+        background: rgba(0,0,0,0.2);
+        padding: 15px;
+        border-radius: 8px;
+        border: 1px solid rgba(255,255,255,0.1);
+      }
+      .standard-info p, .interrupt-types {
+        margin: 8px 0;
+      }
+      .type-list {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin-top: 10px;
+      }
+      .type-item {
+        display: flex;
+        justify-content: space-between;
+        padding: 6px;
+        background: rgba(255,255,255,0.05);
+        border-radius: 4px;
+      }
+      .type-name {
+        color: var(--neon-cyan);
+        font-weight: 600;
+      }
+      .io-simulator {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+      .simulator-config {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 15px;
+      }
+      .config-group {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+      }
+      .config-group label {
+        font-weight: 600;
+        color: var(--neon-cyan);
+      }
+      .config-group input, .config-group select {
+        padding: 8px;
+        border-radius: 6px;
+        border: 1px solid rgba(255,255,255,0.2);
+        background: rgba(0,0,0,0.3);
+        color: white;
+      }
+      .simulation-progress, .system-status, .event-log {
+        background: rgba(0,0,0,0.2);
+        padding: 15px;
+        border-radius: 8px;
+        border: 1px solid rgba(255,255,255,0.1);
+      }
+      .progress-bar-container {
+        width: 100%;
+        height: 20px;
+        background: rgba(255,255,255,0.1);
+        border-radius: 10px;
+        overflow: hidden;
+        margin: 10px 0;
+      }
+      .progress-bar {
+        height: 100%;
+        background: linear-gradient(90deg, var(--neon-cyan), var(--neon-purple));
+        transition: width 0.3s ease;
+      }
+      .progress-stats {
+        display: flex;
+        justify-content: space-between;
+        font-weight: 600;
+      }
+      .status-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 10px;
+        margin-top: 10px;
+      }
+      .status-item {
+        display: flex;
+        justify-content: space-between;
+        padding: 8px;
+        background: rgba(255,255,255,0.05);
+        border-radius: 4px;
+      }
+      .log-container {
+        max-height: 200px;
+        overflow-y: auto;
+        margin-top: 10px;
+      }
+      .log-event {
+        padding: 5px;
+        margin-bottom: 5px;
+        background: rgba(255,255,255,0.05);
+        border-radius: 4px;
+        font-size: 0.8rem;
+        border-left: 3px solid var(--neon-lime);
+      }
+      .irq-reference {
+        background: rgba(0,0,0,0.2);
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        border: 1px solid rgba(255,255,255,0.1);
+      }
+      .irq-item {
+        display: flex;
+        justify-content: space-between;
+        padding: 8px;
+        margin-bottom: 5px;
+        background: rgba(255,255,255,0.05);
+        border-radius: 4px;
+      }
+      .irq {
+        background: var(--neon-pink);
+        color: white;
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-size: 0.8rem;
+        font-weight: 600;
+      }
+      .completion-card {
+        background: rgba(0,0,0,0.2);
+        padding: 20px;
+        border-radius: 8px;
+        text-align: center;
+        border: 2px solid var(--neon-lime);
+      }
+      .completion-icon {
+        font-size: 3rem;
+        margin-bottom: 10px;
+      }
+      .completion-card h4 {
+        color: var(--neon-lime);
+        margin-bottom: 10px;
+      }
+    `;
+    document.head.appendChild(style);
+  </script>
+</body>
+</html>

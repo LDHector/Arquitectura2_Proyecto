@@ -1,0 +1,651 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Unidad 6 - Sistema de Memoria</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo"><h1>AM</h1></div>
+        <div>
+          <h2 class="title">Unidad 6: Sistema de Memoria</h2>
+          <small style="color:#9fb8ff">Jerarquía, caché y organización de memoria</small>
+        </div>
+      </div>
+      <nav>
+        <div class="menu">
+          <a href="index.html" class="btn">🏠 Inicio</a>
+          <a href="unidad5.html" class="btn">⬅️ Unidad 5</a>
+          <button class="btn" onclick="scrollToSection('jerarquia')">📊 Jerarquía</button>
+          <button class="btn" onclick="scrollToSection('cache')">⚡ Caché</button>
+        </div>
+      </nav>
+    </header>
+
+    <div class="grid">
+      <main>
+        <section id="jerarquia">
+          <div class="section-header">
+            <h3>Jerarquía de Memoria</h3>
+            <span class="badge">Organización</span>
+          </div>
+
+          <div class="card interactive-card" onclick="toggleCard(this)">
+            <div class="card-header">
+              <h4>6.1 Niveles de Memoria</h4>
+              <span class="toggle-icon">+</span>
+            </div>
+            <div class="card-content">
+              <div class="memory-hierarchy-visual">
+                <div class="memory-level">
+                  <div class="level-header">
+                    <h5>Registros</h5>
+                    <span class="level-stats">1-2 ns</span>
+                  </div>
+                  <div class="level-details">
+                    <p><strong>Capacidad:</strong> 1-4 KB</p>
+                    <p><strong>Ubicación:</strong> Dentro del CPU</p>
+                    <p><strong>Costo:</strong> Muy alto</p>
+                  </div>
+                </div>
+                <div class="memory-level">
+                  <div class="level-header">
+                    <h5>Caché L1/L2</h5>
+                    <span class="level-stats">2-10 ns</span>
+                  </div>
+                  <div class="level-details">
+                    <p><strong>Capacidad:</strong> 64KB-8MB</p>
+                    <p><strong>Ubicación:</strong> CPU/Proximidad</p>
+                    <p><strong>Costo:</strong> Alto</p>
+                  </div>
+                </div>
+                <div class="memory-level">
+                  <div class="level-header">
+                    <h5>RAM Principal</h5>
+                    <span class="level-stats">10-100 ns</span>
+                  </div>
+                  <div class="level-details">
+                    <p><strong>Capacidad:</strong> 4-64 GB</p>
+                    <p><strong>Ubicación:</strong> Placa madre</p>
+                    <p><strong>Costo:</strong> Medio</p>
+                  </div>
+                </div>
+                <div class="memory-level">
+                  <div class="level-header">
+                    <h5>Almacenamiento</h5>
+                    <span class="level-stats">5-20 ms</span>
+                  </div>
+                  <div class="level-details">
+                    <p><strong>Capacidad:</strong> 256GB-4TB</p>
+                    <p><strong>Ubicación:</strong> Externo</p>
+                    <p><strong>Costo:</strong> Bajo</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card interactive-card" onclick="toggleCard(this)">
+            <div class="card-header">
+              <h4>6.2 Tipos de Memoria</h4>
+              <span class="toggle-icon">+</span>
+            </div>
+            <div class="card-content">
+              <div class="memory-types">
+                <div class="memory-type">
+                  <h5>SRAM (Estática)</h5>
+                  <ul>
+                    <li><strong>Velocidad:</strong> Muy rápida</li>
+                    <li><strong>Volatilidad:</strong> Volátil</li>
+                    <li><strong>Uso:</strong> Caché</li>
+                    <li><strong>Costo:</strong> Alto</li>
+                  </ul>
+                </div>
+                <div class="memory-type">
+                  <h5>DRAM (Dinámica)</h5>
+                  <ul>
+                    <li><strong>Velocidad:</strong> Rápida</li>
+                    <li><strong>Volatilidad:</strong> Volátil (refresh)</li>
+                    <li><strong>Uso:</strong> Memoria principal</li>
+                    <li><strong>Costo:</strong> Medio</li>
+                  </ul>
+                </div>
+                <div class="memory-type">
+                  <h5>Flash</h5>
+                  <ul>
+                    <li><strong>Velocidad:</strong> Media</li>
+                    <li><strong>Volatilidad:</strong> No volátil</li>
+                    <li><strong>Uso:</strong> SSD, USB</li>
+                    <li><strong>Costo:</strong> Bajo-medio</li>
+                  </ul>
+                </div>
+                <div class="memory-type">
+                  <h5>HDD Magnético</h5>
+                  <ul>
+                    <li><strong>Velocidad:</strong> Lenta</li>
+                    <li><strong>Volatilidad:</strong> No volátil</li>
+                    <li><strong>Uso:</strong> Almacenamiento</li>
+                    <li><strong>Costo:</strong> Muy bajo</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="cache">
+          <div class="section-header">
+            <h3>Memoria Caché</h3>
+            <span class="badge">Rendimiento</span>
+          </div>
+
+          <div class="card interactive-card" onclick="toggleCard(this)">
+            <div class="card-header">
+              <h4>6.3 Principio de Localidad</h4>
+              <span class="toggle-icon">+</span>
+            </div>
+            <div class="card-content">
+              <div class="locality-principles">
+                <div class="locality-type">
+                  <h5>Localidad Temporal</h5>
+                  <p>Datos usados recientemente tienden a ser usados nuevamente</p>
+                  <code>for (int i=0; i<1000; i++) sum += array[i];</code>
+                </div>
+                <div class="locality-type">
+                  <h5>Localidad Espacial</h5>
+                  <p>Datos cercanos tienden a ser usados juntos</p>
+                  <code>array[i], array[i+1], array[i+2]</code>
+                </div>
+              </div>
+              <div class="cache-performance">
+                <h5>Métricas de Rendimiento</h5>
+                <div class="performance-metrics">
+                  <div class="metric">
+                    <span>Tasa de Aciertos (Hit Rate):</span>
+                    <code>H = hits / total_accesses</code>
+                  </div>
+                  <div class="metric">
+                    <span>Tiempo Promedio de Acceso:</span>
+                    <code>T<sub>avg</sub> = H×T<sub>cache</sub> + (1-H)×T<sub>mem</sub></code>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card interactive-card" onclick="toggleCard(this)">
+            <div class="card-header">
+              <h4>6.4 Mapeo de Caché</h4>
+              <span class="toggle-icon">+</span>
+            </div>
+            <div class="card-content">
+              <div class="cache-mapping">
+                <div class="mapping-type">
+                  <h5>Directo</h5>
+                  <p>Cada bloque de memoria a posición fija</p>
+                  <div class="address-format">
+                    <span class="addr-field tag">Etiqueta</span>
+                    <span class="addr-field index">Índice</span>
+                    <span class="addr-field offset">Desplazamiento</span>
+                  </div>
+                  <p><strong>Ventaja:</strong> Simple y rápido</p>
+                  <p><strong>Desventaja:</strong> Conflictos</p>
+                </div>
+                <div class="mapping-type">
+                  <h5>Asociativo</h5>
+                  <p>Cualquier bloque en cualquier línea</p>
+                  <div class="address-format">
+                    <span class="addr-field tag">Etiqueta</span>
+                    <span class="addr-field offset">Desplazamiento</span>
+                  </div>
+                  <p><strong>Ventaja:</strong> Sin conflictos</p>
+                  <p><strong>Desventaja:</strong> Lento y complejo</p>
+                </div>
+                <div class="mapping-type">
+                  <h5>Asociativo por Conjuntos</h5>
+                  <p>Compromiso entre ambos</p>
+                  <div class="address-format">
+                    <span class="addr-field tag">Etiqueta</span>
+                    <span class="addr-field index">Conjunto</span>
+                    <span class="addr-field offset">Desplazamiento</span>
+                  </div>
+                  <p><strong>Ventaja:</strong> Balanceado</p>
+                  <p><strong>Desventaja:</strong> Complejidad media</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="simulador">
+          <div class="section-header">
+            <h3>Simulador de Caché</h3>
+            <span class="badge interactive">Práctica</span>
+          </div>
+
+          <div class="card">
+            <h4>Simulador de Accesos a Memoria</h4>
+            <div class="cache-simulator">
+              <div class="simulator-controls">
+                <div class="control-group">
+                  <label>Tipo de Mapeo:</label>
+                  <select id="mappingType">
+                    <option value="direct">Directo</option>
+                    <option value="associative">Asociativo</option>
+                    <option value="set-associative">Asociativo por Conjuntos</option>
+                  </select>
+                </div>
+                <div class="control-group">
+                  <label>Secuencia de Accesos:</label>
+                  <input type="text" id="accessSequence" value="0,2,4,8,0,2,16,32,0,64" placeholder="Ej: 0,4,8,12">
+                </div>
+                <button class="btn" onclick="runCacheSimulation()">Ejecutar Simulación</button>
+              </div>
+
+              <div class="simulation-results">
+                <h5>Resultados</h5>
+                <div class="results-grid">
+                  <div class="result-item">
+                    <span>Total Accesos:</span>
+                    <span id="totalAccesses">0</span>
+                  </div>
+                  <div class="result-item">
+                    <span>Aciertos:</span>
+                    <span id="hitsCount">0</span>
+                  </div>
+                  <div class="result-item">
+                    <span>Fallos:</span>
+                    <span id="missesCount">0</span>
+                  </div>
+                  <div class="result-item">
+                    <span>Tasa de Aciertos:</span>
+                    <span id="hitRate">0%</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="cache-visualization">
+                <h5>Estado de la Caché</h5>
+                <div class="cache-lines" id="cacheLines">
+                  <!-- Líneas de caché se mostrarán aquí -->
+                </div>
+              </div>
+
+              <div class="access-log">
+                <h5>Log de Accesos</h5>
+                <div class="log-entries" id="accessLog">
+                  <!-- Log de accesos -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <aside>
+        <div class="section-header"><h3>Progreso Unidad 6</h3></div>
+        <div class="progress-card">
+          <div class="progress-circle">
+            <svg width="100" height="100">
+              <circle cx="50" cy="50" r="40" stroke="#333" stroke-width="8" fill="none"></circle>
+              <circle cx="50" cy="50" r="40" stroke="#00fff0" stroke-width="8" fill="none" 
+                      stroke-dasharray="251.2" stroke-dashoffset="75.36" class="progress-ring"></circle>
+            </svg>
+            <div class="progress-text">70%</div>
+          </div>
+          <div class="progress-stats">
+            <div class="stat">
+              <span class="stat-label">Temas Completados</span>
+              <span class="stat-value">4/4</span>
+            </div>
+            <div class="stat">
+              <span class="stat-label">Simulador</span>
+              <span class="stat-value">1/1</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-header"><h3>Políticas de Reemplazo</h3></div>
+        <div class="replacement-policies">
+          <div class="policy-item">
+            <span class="policy">LRU</span>
+            <span class="policy-desc">Usado Menos Recientemente</span>
+          </div>
+          <div class="policy-item">
+            <span class="policy">FIFO</span>
+            <span class="policy-desc">Primero en Entrar, Primero en Salir</span>
+          </div>
+          <div class="policy-item">
+            <span class="policy">LFU</span>
+            <span class="policy-desc">Usado Menos Frecuentemente</span>
+          </div>
+          <div class="policy-item">
+            <span class="policy">Aleatorio</span>
+            <span class="policy-desc">Selección aleatoria</span>
+          </div>
+        </div>
+
+        <div class="section-header"><h3>Próxima Unidad</h3></div>
+        <a href="unidad7.html" class="unit-card">
+          <div class="unit-icon">🔌</div>
+          <h4>Unidad 7</h4>
+          <p>Entrada/Salida</p>
+          <div class="unit-progress">
+            <div class="progress-bar" style="width: 0%"></div>
+          </div>
+        </a>
+      </aside>
+    </div>
+
+    <footer>
+      <div>
+        <a href="unidad5.html" class="btn">⬅️ Unidad Anterior</a>
+        <a href="unidad7.html" class="btn">➡️ Siguiente Unidad</a>
+      </div>
+      <small>Unidad 6 - Sistema de Memoria</small>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    // Simulador de caché
+    class CacheSimulator {
+      constructor() {
+        this.cache = new Map();
+        this.accessCount = 0;
+        this.hitCount = 0;
+        this.missCount = 0;
+      }
+
+      accessMemory(address, mappingType) {
+        this.accessCount++;
+        
+        if (this.cache.has(address)) {
+          this.hitCount++;
+          this.updateAccessLog(address, 'HIT');
+          return true;
+        } else {
+          this.missCount++;
+          // Simular reemplazo (LRU simple)
+          if (this.cache.size >= 4) {
+            const firstKey = this.cache.keys().next().value;
+            this.cache.delete(firstKey);
+          }
+          this.cache.set(address, true);
+          this.updateAccessLog(address, 'MISS');
+          return false;
+        }
+      }
+
+      updateAccessLog(address, result) {
+        const log = document.getElementById('accessLog');
+        const entry = document.createElement('div');
+        entry.className = `log-entry ${result.toLowerCase()}`;
+        entry.textContent = `Acceso ${address}: ${result}`;
+        log.appendChild(entry);
+        log.scrollTop = log.scrollHeight;
+      }
+
+      getStats() {
+        return {
+          total: this.accessCount,
+          hits: this.hitCount,
+          misses: this.missCount,
+          hitRate: this.accessCount > 0 ? (this.hitCount / this.accessCount * 100).toFixed(1) : 0
+        };
+      }
+
+      reset() {
+        this.cache.clear();
+        this.accessCount = 0;
+        this.hitCount = 0;
+        this.missCount = 0;
+      }
+    }
+
+    const cacheSim = new CacheSimulator();
+
+    function runCacheSimulation() {
+      // Limpiar resultados anteriores
+      cacheSim.reset();
+      document.getElementById('accessLog').innerHTML = '';
+      document.getElementById('cacheLines').innerHTML = '';
+
+      const sequence = document.getElementById('accessSequence').value;
+      const addresses = sequence.split(',').map(addr => parseInt(addr.trim()));
+      const mappingType = document.getElementById('mappingType').value;
+
+      // Ejecutar secuencia de accesos
+      addresses.forEach(address => {
+        cacheSim.accessMemory(address, mappingType);
+      });
+
+      // Actualizar estadísticas
+      const stats = cacheSim.getStats();
+      document.getElementById('totalAccesses').textContent = stats.total;
+      document.getElementById('hitsCount').textContent = stats.hits;
+      document.getElementById('missesCount').textContent = stats.misses;
+      document.getElementById('hitRate').textContent = `${stats.hitRate}%`;
+
+      // Mostrar estado de la caché
+      updateCacheVisualization();
+    }
+
+    function updateCacheVisualization() {
+      const cacheLines = document.getElementById('cacheLines');
+      cacheLines.innerHTML = '';
+      
+      cacheSim.cache.forEach((value, address) => {
+        const line = document.createElement('div');
+        line.className = 'cache-line';
+        line.innerHTML = `
+          <span class="line-address">${address}</span>
+          <span class="line-data">Datos...</span>
+        `;
+        cacheLines.appendChild(line);
+      });
+    }
+
+    // Estilos adicionales para la unidad 6
+    const style = document.createElement('style');
+    style.textContent = `
+      .memory-hierarchy-visual {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 15px;
+      }
+      .memory-level {
+        background: rgba(0,0,0,0.2);
+        padding: 15px;
+        border-radius: 8px;
+        border: 1px solid rgba(255,255,255,0.1);
+      }
+      .level-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+      }
+      .level-header h5 {
+        color: var(--neon-cyan);
+        margin: 0;
+      }
+      .level-stats {
+        background: var(--neon-pink);
+        color: white;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 0.8rem;
+        font-weight: 600;
+      }
+      .level-details p {
+        margin: 5px 0;
+        font-size: 0.9rem;
+      }
+      .memory-types, .locality-principles, .cache-mapping {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+        margin-top: 15px;
+      }
+      .memory-type, .locality-type, .mapping-type {
+        background: rgba(0,0,0,0.2);
+        padding: 15px;
+        border-radius: 8px;
+        border: 1px solid rgba(255,255,255,0.1);
+      }
+      .cache-performance {
+        margin-top: 20px;
+        padding: 15px;
+        background: rgba(0,0,0,0.2);
+        border-radius: 8px;
+        border: 1px solid rgba(255,255,255,0.1);
+      }
+      .performance-metrics {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 10px;
+      }
+      .metric {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 8px;
+        background: rgba(255,255,255,0.05);
+        border-radius: 4px;
+      }
+      .address-format {
+        display: flex;
+        margin: 10px 0;
+        border: 1px solid rgba(255,255,255,0.2);
+        border-radius: 4px;
+        overflow: hidden;
+      }
+      .addr-field {
+        padding: 8px;
+        text-align: center;
+        border-right: 1px solid rgba(255,255,255,0.2);
+      }
+      .addr-field:last-child {
+        border-right: none;
+      }
+      .tag { background: rgba(255,0,209,0.1); flex: 3; }
+      .index { background: rgba(0,255,240,0.1); flex: 2; }
+      .offset { background: rgba(183,255,0,0.1); flex: 1; }
+      .cache-simulator {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+      .simulator-controls {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+      }
+      .control-group {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+      }
+      .control-group label {
+        font-weight: 600;
+        color: var(--neon-cyan);
+      }
+      .control-group input, .control-group select {
+        padding: 8px;
+        border-radius: 6px;
+        border: 1px solid rgba(255,255,255,0.2);
+        background: rgba(0,0,0,0.3);
+        color: white;
+      }
+      .simulation-results, .cache-visualization, .access-log {
+        background: rgba(0,0,0,0.2);
+        padding: 15px;
+        border-radius: 8px;
+        border: 1px solid rgba(255,255,255,0.1);
+      }
+      .results-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 10px;
+        margin-top: 10px;
+      }
+      .result-item {
+        display: flex;
+        justify-content: space-between;
+        padding: 8px;
+        background: rgba(255,255,255,0.05);
+        border-radius: 4px;
+      }
+      .cache-lines {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        gap: 10px;
+        margin-top: 10px;
+      }
+      .cache-line {
+        padding: 10px;
+        background: rgba(0,255,240,0.1);
+        border-radius: 4px;
+        text-align: center;
+        border: 1px solid var(--neon-cyan);
+      }
+      .log-entries {
+        max-height: 200px;
+        overflow-y: auto;
+        margin-top: 10px;
+      }
+      .log-entry {
+        padding: 5px;
+        margin-bottom: 5px;
+        border-radius: 4px;
+        font-size: 0.8rem;
+      }
+      .log-entry.hit {
+        background: rgba(0,255,0,0.1);
+        border-left: 3px solid #00ff00;
+      }
+      .log-entry.miss {
+        background: rgba(255,0,0,0.1);
+        border-left: 3px solid #ff0000;
+      }
+      .replacement-policies {
+        background: rgba(0,0,0,0.2);
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        border: 1px solid rgba(255,255,255,0.1);
+      }
+      .policy-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 8px;
+        margin-bottom: 5px;
+        background: rgba(255,255,255,0.05);
+        border-radius: 4px;
+      }
+      .policy {
+        background: var(--neon-purple);
+        color: white;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        min-width: 50px;
+        text-align: center;
+      }
+    `;
+    document.head.appendChild(style);
+  </script>
+</body>
+</html>
