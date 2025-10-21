@@ -1,0 +1,458 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Unidad 3 - Conjunto de Instrucciones</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo"><h1>AM</h1></div>
+        <div>
+          <h2 class="title">Unidad 3: Conjunto de Instrucciones</h2>
+          <small style="color:#9fb8ff">Lenguaje máquina y formatos de instrucción</small>
+        </div>
+      </div>
+      <nav>
+        <div class="menu">
+          <a href="index.html" class="btn">🏠 Inicio</a>
+          <a href="unidad2.html" class="btn">⬅️ Unidad 2</a>
+          <button class="btn" onclick="scrollToSection('formatos')">📋 Formatos</button>
+          <button class="btn" onclick="scrollToSection('direccionamiento')">🎯 Direccionamiento</button>
+        </div>
+      </nav>
+    </header>
+
+    <div class="grid">
+      <main>
+        <section id="formatos">
+          <div class="section-header">
+            <h3>Formatos de Instrucción</h3>
+            <span class="badge">Estructura</span>
+          </div>
+
+          <div class="card interactive-card" onclick="toggleCard(this)">
+            <div class="card-header">
+              <h4>3.1 Componentes de una Instrucción</h4>
+              <span class="toggle-icon">+</span>
+            </div>
+            <div class="card-content">
+              <div class="instruction-components">
+                <div class="component">
+                  <h5>Código de Operación (OPCODE)</h5>
+                  <p>Especifica la operación a realizar</p>
+                  <code>ADD, SUB, MOV, JMP</code>
+                </div>
+                <div class="component">
+                  <h5>Operandos</h5>
+                  <p>Datos sobre los que opera la instrucción</p>
+                  <code>R1, R2, [MEM], #5</code>
+                </div>
+                <div class="component">
+                  <h5>Modo de Direccionamiento</h5>
+                  <p>Cómo interpretar los operandos</p>
+                  <code>Inmediato, Directo, Indirecto</code>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card interactive-card" onclick="toggleCard(this)">
+            <div class="card-header">
+              <h4>3.2 Tipos de Formatos</h4>
+              <span class="toggle-icon">+</span>
+            </div>
+            <div class="card-content">
+              <div class="format-types">
+                <div class="format-type">
+                  <h5>Formato R (Registro)</h5>
+                  <p>Todos los operandos en registros</p>
+                  <div class="instruction-format">
+                    <span class="format-field opcode">OPCODE</span>
+                    <span class="format-field reg">R1</span>
+                    <span class="format-field reg">R2</span>
+                    <span class="format-field reg">R3</span>
+                  </div>
+                  <code>ADD R1, R2, R3</code>
+                </div>
+                <div class="format-type">
+                  <h5>Formato I (Inmediato)</h5>
+                  <p>Un operando inmediato</p>
+                  <div class="instruction-format">
+                    <span class="format-field opcode">OPCODE</span>
+                    <span class="format-field reg">R1</span>
+                    <span class="format-field reg">R2</span>
+                    <span class="format-field imm">INMEDIATO</span>
+                  </div>
+                  <code>ADDI R1, R2, #5</code>
+                </div>
+                <div class="format-type">
+                  <h5>Formato J (Salto)</h5>
+                  <p>Instrucciones de salto</p>
+                  <div class="instruction-format">
+                    <span class="format-field opcode">OPCODE</span>
+                    <span class="format-field address">DIRECCIÓN</span>
+                  </div>
+                  <code>JMP LABEL</code>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="direccionamiento">
+          <div class="section-header">
+            <h3>Modos de Direccionamiento</h3>
+            <span class="badge">Acceso</span>
+          </div>
+
+          <div class="card interactive-card" onclick="toggleCard(this)">
+            <div class="card-header">
+              <h4>3.3 Modos Básicos</h4>
+              <span class="toggle-icon">+</span>
+            </div>
+            <div class="card-content">
+              <div class="addressing-modes">
+                <div class="addressing-mode">
+                  <h5>Inmediato</h5>
+                  <p>Operando en la instrucción</p>
+                  <code>MOV R1, #5</code>
+                  <small>R1 ← 5</small>
+                </div>
+                <div class="addressing-mode">
+                  <h5>Directo a Registro</h5>
+                  <p>Operando en registro</p>
+                  <code>MOV R1, R2</code>
+                  <small>R1 ← [R2]</small>
+                </div>
+                <div class="addressing-mode">
+                  <h5>Directo a Memoria</h5>
+                  <p>Operando en dirección específica</p>
+                  <code>MOV R1, [1000]</code>
+                  <small>R1 ← M[1000]</small>
+                </div>
+                <div class="addressing-mode">
+                  <h5>Indirecto a Registro</h5>
+                  <p>Registro contiene dirección</p>
+                  <code>MOV R1, [R2]</code>
+                  <small>R1 ← M[[R2]]</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card interactive-card" onclick="toggleCard(this)">
+            <div class="card-header">
+              <h4>3.4 Modos Avanzados</h4>
+              <span class="toggle-icon">+</span>
+            </div>
+            <div class="card-content">
+              <div class="advanced-addressing">
+                <div class="addressing-mode">
+                  <h5>Autoincremento</h5>
+                  <p>Útil para arreglos</p>
+                  <code>MOV R1, [R2]+</code>
+                  <small>R1 ← M[[R2]], R2 ← [R2]+1</small>
+                </div>
+                <div class="addressing-mode">
+                  <h5>Autodecremento</h5>
+                  <p>Para pilas y arreglos inversos</p>
+                  <code>MOV R1, -[R2]</code>
+                  <small>R2 ← [R2]-1, R1 ← M[[R2]]</small>
+                </div>
+                <div class="addressing-mode">
+                  <h5>Indizado</h5>
+                  <p>Base + índice</p>
+                  <code>MOV R1, 1000[R2]</code>
+                  <small>R1 ← M[1000 + [R2]]</small>
+                </div>
+                <div class="addressing-mode">
+                  <h5>Relativo al PC</h5>
+                  <p>Para saltos relativos</p>
+                  <code>JMP +8</code>
+                  <small>PC ← PC + 8</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="simulador">
+          <div class="section-header">
+            <h3>Simulador de Instrucciones</h3>
+            <span class="badge interactive">Práctica</span>
+          </div>
+
+          <div class="card">
+            <h4>Ejecución Paso a Paso</h4>
+            <div class="simulator">
+              <div class="register-file">
+                <h5>Registros</h5>
+                <div class="registers">
+                  <div class="register"><span>R1:</span><span id="reg1">0</span></div>
+                  <div class="register"><span>R2:</span><span id="reg2">0</span></div>
+                  <div class="register"><span>R3:</span><span id="reg3">0</span></div>
+                  <div class="register"><span>PC:</span><span id="regPC">0</span></div>
+                </div>
+              </div>
+              
+              <div class="memory">
+                <h5>Memoria</h5>
+                <div class="memory-cells">
+                  <div class="memory-cell"><span>1000:</span><span id="mem1000">10</span></div>
+                  <div class="memory-cell"><span>1004:</span><span id="mem1004">20</span></div>
+                  <div class="memory-cell"><span>1008:</span><span id="mem1008">0</span></div>
+                </div>
+              </div>
+
+              <div class="program">
+                <h5>Programa</h5>
+                <div class="instructions">
+                  <div class="instruction-line" data-address="0">
+                    <span>MOV R1, #5</span>
+                    <button class="btn-small" onclick="executeInstruction(0)">Ejecutar</button>
+                  </div>
+                  <div class="instruction-line" data-address="1">
+                    <span>MOV R2, [1000]</span>
+                    <button class="btn-small" onclick="executeInstruction(1)">Ejecutar</button>
+                  </div>
+                  <div class="instruction-line" data-address="2">
+                    <span>ADD R3, R1, R2</span>
+                    <button class="btn-small" onclick="executeInstruction(2)">Ejecutar</button>
+                  </div>
+                  <div class="instruction-line" data-address="3">
+                    <span>MOV [1008], R3</span>
+                    <button class="btn-small" onclick="executeInstruction(3)">Ejecutar</button>
+                  </div>
+                </div>
+              </div>
+
+              <button class="btn" onclick="resetSimulator()">Reiniciar Simulador</button>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <aside>
+        <div class="section-header"><h3>Progreso Unidad 3</h3></div>
+        <div class="progress-card">
+          <div class="progress-circle">
+            <svg width="100" height="100">
+              <circle cx="50" cy="50" r="40" stroke="#333" stroke-width="8" fill="none"></circle>
+              <circle cx="50" cy="50" r="40" stroke="#00fff0" stroke-width="8" fill="none" 
+                      stroke-dasharray="251.2" stroke-dashoffset="75.36" class="progress-ring"></circle>
+            </svg>
+            <div class="progress-text">70%</div>
+          </div>
+          <div class="progress-stats">
+            <div class="stat">
+              <span class="stat-label">Temas Completados</span>
+              <span class="stat-value">4/4</span>
+            </div>
+            <div class="stat">
+              <span class="stat-label">Simulador</span>
+              <span class="stat-value">1/1</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-header"><h3>Referencia Rápida</h3></div>
+        <div class="quick-reference">
+          <h5>Operaciones Comunes</h5>
+          <div class="opcode-list">
+            <div class="opcode-item">
+              <span class="opcode">MOV</span>
+              <span class="description">Mover datos</span>
+            </div>
+            <div class="opcode-item">
+              <span class="opcode">ADD/SUB</span>
+              <span class="description">Sumar/Restar</span>
+            </div>
+            <div class="opcode-item">
+              <span class="opcode">AND/OR</span>
+              <span class="description">Operaciones lógicas</span>
+            </div>
+            <div class="opcode-item">
+              <span class="opcode">JMP/JZ</span>
+              <span class="description">Saltos</span>
+            </div>
+            <div class="opcode-item">
+              <span class="opcode">CMP</span>
+              <span class="description">Comparar</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-header"><h3>Próxima Unidad</h3></div>
+        <a href="unidad4.html" class="unit-card">
+          <div class="unit-icon">⚙️</div>
+          <h4>Unidad 4</h4>
+          <p>Unidad de Ejecución</p>
+          <div class="unit-progress">
+            <div class="progress-bar" style="width: 0%"></div>
+          </div>
+        </a>
+      </aside>
+    </div>
+
+    <footer>
+      <div>
+        <a href="unidad2.html" class="btn">⬅️ Unidad Anterior</a>
+        <a href="unidad4.html" class="btn">➡️ Siguiente Unidad</a>
+      </div>
+      <small>Unidad 3 - Conjunto de Instrucciones</small>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    // Simulador de instrucciones
+    let registers = { R1: 0, R2: 0, R3: 0, PC: 0 };
+    let memory = { 1000: 10, 1004: 20, 1008: 0 };
+
+    function executeInstruction(address) {
+      const instruction = document.querySelector(`[data-address="${address}"] span`).textContent;
+      
+      switch(address) {
+        case 0: // MOV R1, #5
+          registers.R1 = 5;
+          break;
+        case 1: // MOV R2, [1000]
+          registers.R2 = memory[1000];
+          break;
+        case 2: // ADD R3, R1, R2
+          registers.R3 = registers.R1 + registers.R2;
+          break;
+        case 3: // MOV [1008], R3
+          memory[1008] = registers.R3;
+          break;
+      }
+      
+      registers.PC = address + 1;
+      updateSimulatorDisplay();
+      
+      // Resaltar instrucción ejecutada
+      document.querySelectorAll('.instruction-line').forEach(line => {
+        line.style.background = 'transparent';
+      });
+      document.querySelector(`[data-address="${address}"]`).style.background = 'rgba(0,255,240,0.1)';
+    }
+
+    function resetSimulator() {
+      registers = { R1: 0, R2: 0, R3: 0, PC: 0 };
+      memory = { 1000: 10, 1004: 20, 1008: 0 };
+      updateSimulatorDisplay();
+      
+      document.querySelectorAll('.instruction-line').forEach(line => {
+        line.style.background = 'transparent';
+      });
+    }
+
+    function updateSimulatorDisplay() {
+      document.getElementById('reg1').textContent = registers.R1;
+      document.getElementById('reg2').textContent = registers.R2;
+      document.getElementById('reg3').textContent = registers.R3;
+      document.getElementById('regPC').textContent = registers.PC;
+      
+      document.getElementById('mem1000').textContent = memory[1000];
+      document.getElementById('mem1004').textContent = memory[1004];
+      document.getElementById('mem1008').textContent = memory[1008];
+    }
+
+    // Estilos adicionales para la unidad 3
+    const style = document.createElement('style');
+    style.textContent = `
+      .instruction-components, .format-types, .addressing-modes, .advanced-addressing {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+        margin-top: 15px;
+      }
+      .component, .format-type, .addressing-mode {
+        background: rgba(0,0,0,0.2);
+        padding: 15px;
+        border-radius: 8px;
+        border: 1px solid rgba(255,255,255,0.1);
+      }
+      .instruction-format {
+        display: flex;
+        margin: 10px 0;
+        border: 1px solid rgba(255,255,255,0.2);
+        border-radius: 4px;
+        overflow: hidden;
+      }
+      .format-field {
+        padding: 5px;
+        text-align: center;
+        border-right: 1px solid rgba(255,255,255,0.2);
+      }
+      .format-field:last-child {
+        border-right: none;
+      }
+      .opcode { background: rgba(255,0,209,0.1); flex: 2; }
+      .reg { background: rgba(0,255,240,0.1); flex: 1; }
+      .imm { background: rgba(183,255,0,0.1); flex: 2; }
+      .address { background: rgba(155,107,255,0.1); flex: 3; }
+      .simulator {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        margin-top: 15px;
+      }
+      .register-file, .memory, .program {
+        background: rgba(0,0,0,0.2);
+        padding: 15px;
+        border-radius: 8px;
+        border: 1px solid rgba(255,255,255,0.1);
+      }
+      .program {
+        grid-column: 1 / span 2;
+      }
+      .registers, .memory-cells, .instructions {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin-top: 10px;
+      }
+      .register, .memory-cell, .instruction-line {
+        display: flex;
+        justify-content: space-between;
+        padding: 8px;
+        background: rgba(255,255,255,0.05);
+        border-radius: 4px;
+      }
+      .quick-reference {
+        background: rgba(0,0,0,0.2);
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        border: 1px solid rgba(255,255,255,0.1);
+      }
+      .opcode-list {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin-top: 10px;
+      }
+      .opcode-item {
+        display: flex;
+        justify-content: space-between;
+        padding: 6px;
+        background: rgba(255,255,255,0.05);
+        border-radius: 4px;
+      }
+      .opcode {
+        color: var(--neon-cyan);
+        font-weight: 600;
+      }
+    `;
+    document.head.appendChild(style);
+  </script>
+</body>
+</html>

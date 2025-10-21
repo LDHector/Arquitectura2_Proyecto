@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Unidad 1 - Arquitectura de Máquinas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo"><h1>AM</h1></div>
+        <div>
+          <h2 class="title">Unidad 1: Introducción a la Arquitectura</h2>
+          <small style="color:#9fb8ff">Fundamentos de arquitectura de computadoras</small>
+        </div>
+      </div>
+      <nav>
+        <div class="menu">
+          <a href="index.html" class="btn">🏠 Inicio</a>
+          <button class="btn" onclick="scrollToSection('contenido')">📚 Contenido</button>
+          <button class="btn" onclick="scrollToSection('ejercicios')">💪 Ejercicios</button>
+        </div>
+      </nav>
+    </header>
+
+    <div class="grid">
+      <main>
+        <section id="contenido">
+          <div class="section-header">
+            <h3>Contenido de la Unidad 1</h3>
+            <span class="badge">Fundamentos</span>
+          </div>
+
+          <div class="card interactive-card" onclick="toggleCard(this)">
+            <div class="card-header">
+              <h4>1.1 Arquitectura vs Organización</h4>
+              <span class="toggle-icon">+</span>
+            </div>
+            <div class="card-content">
+              <div class="comparison">
+                <div class="comparison-item">
+                  <h5>Arquitectura</h5>
+                  <ul>
+                    <li>Atributos visibles al programador</li>
+                    <li>Conjunto de instrucciones</li>
+                    <li>Representación de datos</li>
+                    <li>Mecanismos de E/S</li>
+                    <li>Técnicas de direccionamiento</li>
+                  </ul>
+                </div>
+                <div class="comparison-item">
+                  <h5>Organización</h5>
+                  <ul>
+                    <li>Unidades operativas y su interconexión</li>
+                    <li>Señales de control</li>
+                    <li>Interfaces entre computadora y periféricos</li>
+                    <li>Tecnología de memoria</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card interactive-card" onclick="toggleCard(this)">
+            <div class="card-header">
+              <h4>1.2 Evolución Histórica</h4>
+              <span class="toggle-icon">+</span>
+            </div>
+            <div class="card-content">
+              <div class="timeline">
+                <div class="timeline-item">
+                  <div class="timeline-year">1940</div>
+                  <div class="timeline-content">
+                    <h5>Primera Generación</h5>
+                    <p>Válvulas de vacío, ENIAC, programación en lenguaje máquina</p>
+                  </div>
+                </div>
+                <div class="timeline-item">
+                  <div class="timeline-year">1950</div>
+                  <div class="timeline-content">
+                    <h5>Segunda Generación</h5>
+                    <p>Transistores, lenguajes de alto nivel (FORTRAN, COBOL)</p>
+                  </div>
+                </div>
+                <div class="timeline-item">
+                  <div class="timeline-year">1960</div>
+                  <div class="timeline-content">
+                    <h5>Tercera Generación</h5>
+                    <p>Circuitos integrados, IBM System/360, sistemas operativos</p>
+                  </div>
+                </div>
+                <div class="timeline-item">
+                  <div class="timeline-year">1970+</div>
+                  <div class="timeline-content">
+                    <h5>Microprocesadores</h5>
+                    <p>Intel 4004, computadoras personales, VLSI</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card interactive-card" onclick="toggleCard(this)">
+            <div class="card-header">
+              <h4>1.3 Modelo de Von Neumann</h4>
+              <span class="toggle-icon">+</span>
+            </div>
+            <div class="card-content">
+              <p>Arquitectura basada en el concepto de <strong>programa almacenado</strong> donde datos e instrucciones se guardan en la misma memoria.</p>
+              
+              <div class="architecture-model">
+                <div class="model-component">
+                  <h5>Unidad Central de Proceso (CPU)</h5>
+                  <ul>
+                    <li>Unidad de Control (UC)</li>
+                    <li>Unidad Aritmético-Lógica (ALU)</li>
+                    <li>Registros</li>
+                  </ul>
+                </div>
+                <div class="model-component">
+                  <h5>Memoria Principal</h5>
+                  <ul>
+                    <li>Almacena datos e instrucciones</li>
+                    <li>Acceso aleatorio</li>
+                    <li>Volátil</li>
+                  </ul>
+                </div>
+                <div class="model-component">
+                  <h5>Dispositivos E/S</h5>
+                  <ul>
+                    <li>Comunicación con el exterior</li>
+                    <li>Interfaces de usuario</li>
+                    <li>Almacenamiento secundario</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card interactive-card" onclick="toggleCard(this)">
+            <div class="card-header">
+              <h4>1.4 Conceptos de Rendimiento</h4>
+              <span class="toggle-icon">+</span>
+            </div>
+            <div class="card-content">
+              <div class="performance-metrics">
+                <div class="metric-item">
+                  <h5>Tiempo de Ejecución</h5>
+                  <p>Tiempo total para completar una tarea</p>
+                </div>
+                <div class="metric-item">
+                  <h5>Throughput</h5>
+                  <p>Trabajo completado por unidad de tiempo</p>
+                </div>
+                <div class="metric-item">
+                  <h5>CPI (Ciclos por Instrucción)</h5>
+                  <p>Ciclos de reloj promedio por instrucción</p>
+                </div>
+                <div class="metric-item">
+                  <h5>Frecuencia de Reloj</h5>
+                  <p>Ciclos por segundo (Hz)</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="ejercicios">
+          <div class="section-header">
+            <h3>Ejercicios Prácticos</h3>
+            <span class="badge interactive">Práctica</span>
+          </div>
+
+          <div class="card">
+            <h4>Ejercicio 1: Identificación de Componentes</h4>
+            <p>Relaciona cada componente con su función principal:</p>
+            <div class="matching-exercise">
+              <div class="matching-pairs">
+                <div class="component" data-match="control">Unidad de Control</div>
+                <div class="component" data-match="alu">ALU</div>
+                <div class="component" data-match="memory">Memoria Principal</div>
+                <div class="component" data-match="io">Dispositivos E/S</div>
+              </div>
+              <div class="functions">
+                <div class="function" data-match="alu">Ejecuta operaciones aritméticas</div>
+                <div class="function" data-match="control">Coordina las operaciones</div>
+                <div class="function" data-match="memory">Almacena datos e instrucciones</div>
+                <div class="function" data-match="io">Permite comunicación externa</div>
+              </div>
+            </div>
+            <button class="btn" onclick="checkMatching()">Verificar</button>
+          </div>
+
+          <div class="card">
+            <h4>Ejercicio 2: Preguntas Conceptuales</h4>
+            <div class="quiz-container">
+              <div class="quiz-question">
+                <p>¿Cuál es la diferencia principal entre arquitectura y organización de computadoras?</p>
+                <textarea id="answer1" rows="4" placeholder="Escribe tu respuesta aquí..."></textarea>
+              </div>
+              <button class="btn" onclick="showAnswerHint()">Mostrar Pista</button>
+              <div id="answer-hint" class="quiz-result" style="display:none">
+                <p><strong>Pista:</strong> La arquitectura se refiere a atributos visibles al programador, mientras que la organización trata sobre la implementación física.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <aside>
+        <div class="section-header"><h3>Recursos de la Unidad</h3></div>
+        <div class="progress-card">
+          <div class="progress-circle">
+            <svg width="100" height="100">
+              <circle cx="50" cy="50" r="40" stroke="#333" stroke-width="8" fill="none"></circle>
+              <circle cx="50" cy="50" r="40" stroke="#00fff0" stroke-width="8" fill="none" 
+                      stroke-dasharray="251.2" stroke-dashoffset="0" class="progress-ring"></circle>
+            </svg>
+            <div class="progress-text">100%</div>
+          </div>
+          <div class="progress-stats">
+            <div class="stat">
+              <span class="stat-label">Temas Completados</span>
+              <span class="stat-value">4/4</span>
+            </div>
+            <div class="stat">
+              <span class="stat-label">Ejercicios</span>
+              <span class="stat-value">2/2</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-header"><h3>Material Adicional</h3></div>
+        <div class="resources">
+          <a href="#" class="resource-link" onclick="downloadResource('unidad1-pdf')">
+            <span class="resource-icon">📄</span>
+            Presentación Unidad 1
+          </a>
+          <a href="#" class="resource-link" onclick="downloadResource('linea-tiempo')">
+            <span class="resource-icon">📊</span>
+            Línea de Tiempo Evolutiva
+          </a>
+          <a href="#" class="resource-link" onclick="downloadResource('ejercicios-unidad1')">
+            <span class="resource-icon">✏️</span>
+            Ejercicios Adicionales
+          </a>
+        </div>
+
+        <div class="section-header"><h3>Próxima Unidad</h3></div>
+        <a href="unidad2.html" class="unit-card">
+          <div class="unit-icon">🔢</div>
+          <h4>Unidad 2</h4>
+          <p>Representación de Datos</p>
+          <div class="unit-progress">
+            <div class="progress-bar" style="width: 0%"></div>
+          </div>
+        </a>
+      </aside>
+    </div>
+
+    <footer>
+      <div>
+        <a href="index.html" class="btn">🏠 Volver al Inicio</a>
+        <a href="unidad2.html" class="btn">➡️ Siguiente Unidad</a>
+      </div>
+      <small>Unidad 1 - Introducción a la Arquitectura</small>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    // Funciones específicas para la unidad 1
+    function checkMatching() {
+      alert('Ejercicio de matching verificado. En una implementación completa, se validarían las relaciones correctas.');
+    }
+
+    function showAnswerHint() {
+      document.getElementById('answer-hint').style.display = 'block';
+    }
+
+    // Estilos adicionales para ejercicios
+    const style = document.createElement('style');
+    style.textContent = `
+      .architecture-model {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+        margin-top: 15px;
+      }
+      .model-component {
+        background: rgba(0,0,0,0.2);
+        padding: 15px;
+        border-radius: 8px;
+        border: 1px solid rgba(255,255,255,0.1);
+      }
+      .model-component h5 {
+        color: var(--neon-cyan);
+        margin-bottom: 10px;
+      }
+      .performance-metrics {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 15px;
+        margin-top: 15px;
+      }
+      .metric-item {
+        text-align: center;
+        padding: 15px;
+        background: rgba(0,0,0,0.2);
+        border-radius: 8px;
+        border: 1px solid rgba(255,255,255,0.1);
+      }
+      .matching-exercise {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        margin: 15px 0;
+      }
+      .matching-pairs, .functions {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .component, .function {
+        padding: 10px;
+        background: rgba(255,255,255,0.05);
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border: 1px solid transparent;
+      }
+      .component:hover, .function:hover {
+        background: rgba(0,255,240,0.1);
+        border-color: var(--neon-cyan);
+      }
+      .component.selected, .function.selected {
+        background: rgba(155,107,255,0.2);
+        border-color: var(--neon-purple);
+      }
+    `;
+    document.head.appendChild(style);
+  </script>
+</body>
+</html>

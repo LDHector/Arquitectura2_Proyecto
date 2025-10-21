@@ -1,0 +1,509 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Unidad 4 - Unidad de Ejecución</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo"><h1>AM</h1></div>
+        <div>
+          <h2 class="title">Unidad 4: Unidad de Ejecución</h2>
+          <small style="color:#9fb8ff">ALU, registros y operaciones aritméticas</small>
+        </div>
+      </div>
+      <nav>
+        <div class="menu">
+          <a href="index.html" class="btn">🏠 Inicio</a>
+          <a href="unidad3.html" class="btn">⬅️ Unidad 3</a>
+          <button class="btn" onclick="scrollToSection('alu')">🧮 ALU</button>
+          <button class="btn" onclick="scrollToSection('registros')">💾 Registros</button>
+        </div>
+      </nav>
+    </header>
+
+    <div class="grid">
+      <main>
+        <section id="alu">
+          <div class="section-header">
+            <h3>Unidad Aritmético-Lógica (ALU)</h3>
+            <span class="badge">Núcleo</span>
+          </div>
+
+          <div class="card interactive-card" onclick="toggleCard(this)">
+            <div class="card-header">
+              <h4>4.1 Funciones de la ALU</h4>
+              <span class="toggle-icon">+</span>
+            </div>
+            <div class="card-content">
+              <div class="alu-functions">
+                <div class="function-category">
+                  <h5>Operaciones Aritméticas</h5>
+                  <ul>
+                    <li>Suma (ADD)</li>
+                    <li>Resta (SUB)</li>
+                    <li>Incremento (INC)</li>
+                    <li>Decremento (DEC)</li>
+                    <li>Multiplicación (MUL)</li>
+                    <li>División (DIV)</li>
+                  </ul>
+                </div>
+                <div class="function-category">
+                  <h5>Operaciones Lógicas</h5>
+                  <ul>
+                    <li>AND</li>
+                    <li>OR</li>
+                    <li>XOR</li>
+                    <li>NOT</li>
+                    <li>Desplazamientos</li>
+                    <li>Rotaciones</li>
+                  </ul>
+                </div>
+                <div class="function-category">
+                  <h5>Operaciones de Comparación</h5>
+                  <ul>
+                    <li>Comparación (CMP)</li>
+                    <li>Test de bits</li>
+                    <li>Verificación de signo</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card interactive-card" onclick="toggleCard(this)">
+            <div class="card-header">
+              <h4>4.2 Sumadores y Acarreo</h4>
+              <span class="toggle-icon">+</span>
+            </div>
+            <div class="card-content">
+              <div class="adder-types">
+                <div class="adder-type">
+                  <h5>Sumador Completo</h5>
+                  <p>Suma 1 bit con acarreo de entrada y salida</p>
+                  <div class="truth-table">
+                    <table>
+                      <tr><th>A</th><th>B</th><th>C<sub>in</sub></th><th>Suma</th><th>C<sub>out</sub></th></tr>
+                      <tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+                      <tr><td>0</td><td>1</td><td>0</td><td>1</td><td>0</td></tr>
+                      <tr><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td></tr>
+                      <tr><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td></tr>
+                    </table>
+                  </div>
+                </div>
+                <div class="adder-type">
+                  <h5>Sumador con Acarreo Anticipado (CLA)</h5>
+                  <p>Calcula todos los acarreos simultáneamente</p>
+                  <p><strong>Ventajas:</strong> Mayor velocidad</p>
+                  <p><strong>Ecuaciones:</strong></p>
+                  <code>C<sub>i+1</sub> = G<sub>i</sub> + P<sub>i</sub>·C<sub>i</sub></code>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="registros">
+          <div class="section-header">
+            <h3>Registros del CPU</h3>
+            <span class="badge">Almacenamiento</span>
+          </div>
+
+          <div class="card interactive-card" onclick="toggleCard(this)">
+            <div class="card-header">
+              <h4>4.3 Tipos de Registros</h4>
+              <span class="toggle-icon">+</span>
+            </div>
+            <div class="card-content">
+              <div class="register-types">
+                <div class="register-type">
+                  <h5>Registros de Propósito General</h5>
+                  <ul>
+                    <li>Almacenan datos temporales</li>
+                    <li>R0, R1, R2, ...</li>
+                    <li>Usados en operaciones aritméticas</li>
+                  </ul>
+                </div>
+                <div class="register-type">
+                  <h5>Registros de Control</h5>
+                  <ul>
+                    <li>PC (Contador de Programa)</li>
+                    <li>IR (Registro de Instrucción)</li>
+                    <li>PSW (Palabra de Estado)</li>
+                  </ul>
+                </div>
+                <div class="register-type">
+                  <h5>Registros de Puntero</h5>
+                  <ul>
+                    <li>SP (Puntero de Pila)</li>
+                    <li>BP (Puntero Base)</li>
+                    <li>Registros de segmento</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card interactive-card" onclick="toggleCard(this)">
+            <div class="card-header">
+              <h4>4.4 Operaciones con Registros</h4>
+              <span class="toggle-icon">+</span>
+            </div>
+            <div class="card-content">
+              <div class="register-operations">
+                <div class="operation">
+                  <h5>Carga y Almacenamiento</h5>
+                  <code>MOV R1, R2</code>
+                  <p>Copia el valor de R2 a R1</p>
+                </div>
+                <div class="operation">
+                  <h5>Desplazamientos</h5>
+                  <code>SHL R1, 2</code>
+                  <p>Desplaza R1 2 bits a la izquierda</p>
+                </div>
+                <div class="operation">
+                  <h5>Rotaciones</h5>
+                  <code>ROL R1, 1</code>
+                  <p>Rota R1 1 bit a la izquierda</p>
+                </div>
+                <div class="operation">
+                  <h5>Intercambio</h5>
+                  <code>XCHG R1, R2</code>
+                  <p>Intercambia valores entre R1 y R2</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="simulador">
+          <div class="section-header">
+            <h3>Simulador de ALU</h3>
+            <span class="badge interactive">Práctica</span>
+          </div>
+
+          <div class="card">
+            <h4>Calculadora de la ALU</h4>
+            <div class="alu-simulator">
+              <div class="input-section">
+                <div class="input-group">
+                  <label>Operando A:</label>
+                  <input type="number" id="operandA" value="15">
+                </div>
+                <div class="input-group">
+                  <label>Operando B:</label>
+                  <input type="number" id="operandB" value="7">
+                </div>
+                <div class="input-group">
+                  <label>Operación:</label>
+                  <select id="operation">
+                    <option value="add">Suma (A + B)</option>
+                    <option value="sub">Resta (A - B)</option>
+                    <option value="and">AND (A & B)</option>
+                    <option value="or">OR (A | B)</option>
+                    <option value="xor">XOR (A ^ B)</option>
+                    <option value="not">NOT (¬A)</option>
+                    <option value="shl">Despl. Izquierda</option>
+                    <option value="shr">Despl. Derecha</option>
+                  </select>
+                </div>
+                <button class="btn" onclick="executeALUOperation()">Ejecutar</button>
+              </div>
+
+              <div class="output-section">
+                <h5>Resultado:</h5>
+                <div class="result-display">
+                  <div class="result-item">
+                    <span>Decimal:</span>
+                    <span id="decimalResult">-</span>
+                  </div>
+                  <div class="result-item">
+                    <span>Binario:</span>
+                    <span id="binaryResult">-</span>
+                  </div>
+                  <div class="result-item">
+                    <span>Hexadecimal:</span>
+                    <span id="hexResult">-</span>
+                  </div>
+                  <div class="result-item">
+                    <span>Banderas:</span>
+                    <span id="flagsResult">-</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="register-display">
+                <h5>Estado de Registros:</h5>
+                <div class="registers">
+                  <div class="register"><span>ACUM:</span><span id="regACUM">0</span></div>
+                  <div class="register"><span>TEMP:</span><span id="regTEMP">0</span></div>
+                  <div class="register"><span>FLAGS:</span><span id="regFLAGS">0000</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <aside>
+        <div class="section-header"><h3>Progreso Unidad 4</h3></div>
+        <div class="progress-card">
+          <div class="progress-circle">
+            <svg width="100" height="100">
+              <circle cx="50" cy="50" r="40" stroke="#333" stroke-width="8" fill="none"></circle>
+              <circle cx="50" cy="50" r="40" stroke="#00fff0" stroke-width="8" fill="none" 
+                      stroke-dasharray="251.2" stroke-dashoffset="100.48" class="progress-ring"></circle>
+            </svg>
+            <div class="progress-text">60%</div>
+          </div>
+          <div class="progress-stats">
+            <div class="stat">
+              <span class="stat-label">Temas Completados</span>
+              <span class="stat-value">4/4</span>
+            </div>
+            <div class="stat">
+              <span class="stat-label">Simulador</span>
+              <span class="stat-value">1/1</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-header"><h3>Banderas de Estado</h3></div>
+        <div class="flags-reference">
+          <div class="flag-item">
+            <span class="flag">Z</span>
+            <span class="flag-desc">Zero - Resultado cero</span>
+          </div>
+          <div class="flag-item">
+            <span class="flag">C</span>
+            <span class="flag-desc">Carry - Acarreo</span>
+          </div>
+          <div class="flag-item">
+            <span class="flag">S</span>
+            <span class="flag-desc">Sign - Signo negativo</span>
+          </div>
+          <div class="flag-item">
+            <span class="flag">O</span>
+            <span class="flag-desc">Overflow - Desbordamiento</span>
+          </div>
+          <div class="flag-item">
+            <span class="flag">P</span>
+            <span class="flag-desc">Parity - Paridad par</span>
+          </div>
+        </div>
+
+        <div class="section-header"><h3>Próxima Unidad</h3></div>
+        <a href="unidad5.html" class="unit-card">
+          <div class="unit-icon">🎛️</div>
+          <h4>Unidad 5</h4>
+          <p>Unidad de Control</p>
+          <div class="unit-progress">
+            <div class="progress-bar" style="width: 0%"></div>
+          </div>
+        </a>
+      </aside>
+    </div>
+
+    <footer>
+      <div>
+        <a href="unidad3.html" class="btn">⬅️ Unidad Anterior</a>
+        <a href="unidad5.html" class="btn">➡️ Siguiente Unidad</a>
+      </div>
+      <small>Unidad 4 - Unidad de Ejecución</small>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    // Simulador de ALU
+    let aluRegisters = {
+      ACUM: 0,
+      TEMP: 0,
+      FLAGS: 0 // ZCSO - 4 bits
+    };
+
+    function executeALUOperation() {
+      const a = parseInt(document.getElementById('operandA').value);
+      const b = parseInt(document.getElementById('operandB').value);
+      const operation = document.getElementById('operation').value;
+      
+      let result;
+      let flags = 0;
+
+      switch(operation) {
+        case 'add':
+          result = a + b;
+          if (result === 0) flags |= 0b1000; // Z
+          if (result > 255) flags |= 0b0100; // C
+          if (result < 0) flags |= 0b0010; // S
+          if ((a > 127 && b > 127 && result < 0) || (a < -128 && b < -128 && result > 0)) flags |= 0b0001; // O
+          break;
+        case 'sub':
+          result = a - b;
+          if (result === 0) flags |= 0b1000;
+          if (result < 0) flags |= 0b0010;
+          break;
+        case 'and':
+          result = a & b;
+          if (result === 0) flags |= 0b1000;
+          break;
+        case 'or':
+          result = a | b;
+          if (result === 0) flags |= 0b1000;
+          break;
+        case 'xor':
+          result = a ^ b;
+          if (result === 0) flags |= 0b1000;
+          break;
+        case 'not':
+          result = ~a;
+          break;
+        case 'shl':
+          result = a << 1;
+          if (result > 255) flags |= 0b0100;
+          break;
+        case 'shr':
+          result = a >> 1;
+          break;
+      }
+
+      // Actualizar registros
+      aluRegisters.ACUM = result;
+      aluRegisters.TEMP = b;
+      aluRegisters.FLAGS = flags;
+
+      // Mostrar resultados
+      document.getElementById('decimalResult').textContent = result;
+      document.getElementById('binaryResult').textContent = (result >>> 0).toString(2).padStart(8, '0');
+      document.getElementById('hexResult').textContent = '0x' + (result >>> 0).toString(16).toUpperCase();
+      
+      let flagsText = '';
+      flagsText += (flags & 0b1000) ? 'Z' : '-';
+      flagsText += (flags & 0b0100) ? 'C' : '-';
+      flagsText += (flags & 0b0010) ? 'S' : '-';
+      flagsText += (flags & 0b0001) ? 'O' : '-';
+      document.getElementById('flagsResult').textContent = flagsText;
+
+      // Actualizar display de registros
+      updateRegisterDisplay();
+    }
+
+    function updateRegisterDisplay() {
+      document.getElementById('regACUM').textContent = aluRegisters.ACUM;
+      document.getElementById('regTEMP').textContent = aluRegisters.TEMP;
+      document.getElementById('regFLAGS').textContent = aluRegisters.FLAGS.toString(2).padStart(4, '0');
+    }
+
+    // Estilos adicionales para la unidad 4
+    const style = document.createElement('style');
+    style.textContent = `
+      .alu-functions, .adder-types, .register-types, .register-operations {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+        margin-top: 15px;
+      }
+      .function-category, .adder-type, .register-type, .operation {
+        background: rgba(0,0,0,0.2);
+        padding: 15px;
+        border-radius: 8px;
+        border: 1px solid rgba(255,255,255,0.1);
+      }
+      .truth-table table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+      }
+      .truth-table th, .truth-table td {
+        padding: 5px;
+        text-align: center;
+        border: 1px solid rgba(255,255,255,0.2);
+      }
+      .truth-table th {
+        background: rgba(0,255,240,0.1);
+      }
+      .alu-simulator {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+      .input-section {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 15px;
+      }
+      .input-group {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+      }
+      .input-group label {
+        font-weight: 600;
+        color: var(--neon-cyan);
+      }
+      .input-group input, .input-group select {
+        padding: 8px;
+        border-radius: 6px;
+        border: 1px solid rgba(255,255,255,0.2);
+        background: rgba(0,0,0,0.3);
+        color: white;
+      }
+      .output-section, .register-display {
+        background: rgba(0,0,0,0.2);
+        padding: 15px;
+        border-radius: 8px;
+        border: 1px solid rgba(255,255,255,0.1);
+      }
+      .result-display, .registers {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin-top: 10px;
+      }
+      .result-item, .register {
+        display: flex;
+        justify-content: space-between;
+        padding: 8px;
+        background: rgba(255,255,255,0.05);
+        border-radius: 4px;
+      }
+      .flags-reference {
+        background: rgba(0,0,0,0.2);
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        border: 1px solid rgba(255,255,255,0.1);
+      }
+      .flag-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 8px;
+        margin-bottom: 5px;
+        background: rgba(255,255,255,0.05);
+        border-radius: 4px;
+      }
+      .flag {
+        background: var(--neon-pink);
+        color: white;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 600;
+        font-size: 0.8rem;
+      }
+    `;
+    document.head.appendChild(style);
+  </script>
+</body>
+</html>

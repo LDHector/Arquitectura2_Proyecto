@@ -1,0 +1,525 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Arquitectura de Máquinas — Computadoras II</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo"><h1>AM</h1></div>
+        <div>
+          <h2 class="title">Arquitectura de Máquinas — Computadoras II</h2>
+          <small style="color:#9fb8ff">Un recorrido visual e interactivo por las unidades y componentes</small>
+        </div>
+      </div>
+      <nav>
+        <div class="menu">
+          <button class="btn" onclick="scrollToSection('intro')">Inicio</button>
+          <button class="btn" onclick="scrollToSection('unidad1')">Unidad I</button>
+          <button class="btn" onclick="scrollToSection('unidad2')">Unidad II</button>
+          <button class="btn" onclick="scrollToSection('unidades')">Unidades</button>
+          <button class="btn" onclick="scrollToSection('simulador')">Simulador</button>
+          <button class="btn" onclick="scrollToSection('resumen')">Resumen</button>
+        </div>
+      </nav>
+    </header>
+
+    <div class="grid">
+      <main>
+        <section id="intro">
+          <div class="section-header">
+            <h3>Introducción</h3>
+            <span class="badge interactive">Interactivo</span>
+          </div>
+          <p>La <strong>arquitectura de máquinas</strong> estudia cómo se organizan y conectan los componentes internos de una computadora. Esta página combina colores neón y un diseño visual para facilitar la lectura y el aprendizaje.</p>
+          
+          <div class="interactive-demo">
+            <h4>Simulador de Flujo de Datos</h4>
+            <div class="pipeline-visual">
+              <div class="pipeline-stage" data-stage="fetch">
+                <div class="stage-label">FETCH</div>
+                <div class="stage-content">Leer instrucción</div>
+              </div>
+              <div class="pipeline-stage" data-stage="decode">
+                <div class="stage-label">DECODE</div>
+                <div class="stage-content">Interpretar</div>
+              </div>
+              <div class="pipeline-stage" data-stage="execute">
+                <div class="stage-label">EXECUTE</div>
+                <div class="stage-content">Ejecutar</div>
+              </div>
+              <div class="pipeline-stage" data-stage="store">
+                <div class="stage-label">STORE</div>
+                <div class="stage-content">Guardar</div>
+              </div>
+            </div>
+            <div class="pipeline-controls">
+              <button class="btn-small" onclick="startPipeline()">Iniciar</button>
+              <button class="btn-small" onclick="pausePipeline()">Pausar</button>
+              <button class="btn-small" onclick="resetPipeline()">Reiniciar</button>
+              <div class="speed-control">
+                <label>Velocidad:</label>
+                <input type="range" min="1" max="10" value="5" onchange="changePipelineSpeed(this.value)">
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="unidad1">
+          <div class="section-header">
+            <h3>Unidad I: Introducción a la Arquitectura y Organización</h3>
+            <span class="badge">Fundamentos</span>
+          </div>
+
+          <div class="card interactive-card" onclick="toggleCard(this)">
+            <div class="card-header">
+              <h4>1.1 Arquitectura y Organización de Computadoras</h4>
+              <span class="toggle-icon">+</span>
+            </div>
+            <div class="card-content">
+              <p><strong>Arquitectura:</strong> atributos visibles al programador, que describen cómo se planifica y diseña el sistema.</p>
+              <p><strong>Organización:</strong> trata sobre la implementación física, los componentes y su interconexión.</p>
+              
+              <div class="comparison">
+                <div class="comparison-item">
+                  <h5>Perspectiva Funcional</h5>
+                  <ul>
+                    <li>Analiza la función de cada componente</li>
+                    <li>Qué hace cada parte del sistema</li>
+                    <li>Enfoque de comportamiento</li>
+                  </ul>
+                </div>
+                <div class="comparison-item">
+                  <h5>Perspectiva Estructural</h5>
+                  <ul>
+                    <li>Estudia posición e interconexión</li>
+                    <li>Cómo está construido el sistema</li>
+                    <li>Enfoque de implementación</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card interactive-card" onclick="toggleCard(this)">
+            <div class="card-header">
+              <h4>1.2 Evolución de las Computadoras</h4>
+              <span class="toggle-icon">+</span>
+            </div>
+            <div class="card-content">
+              <div class="timeline">
+                <div class="timeline-item">
+                  <div class="timeline-year">1940s</div>
+                  <div class="timeline-content">
+                    <h5>Primera Generación</h5>
+                    <p>Válvulas de vacío, ENIAC</p>
+                  </div>
+                </div>
+                <div class="timeline-item">
+                  <div class="timeline-year">1950s</div>
+                  <div class="timeline-content">
+                    <h5>Segunda Generación</h5>
+                    <p>Transistores, lenguajes de programación</p>
+                  </div>
+                </div>
+                <div class="timeline-item">
+                  <div class="timeline-year">1960s</div>
+                  <div class="timeline-content">
+                    <h5>Tercera Generación</h5>
+                    <p>Circuitos integrados, IBM System/360</p>
+                  </div>
+                </div>
+                <div class="timeline-item">
+                  <div class="timeline-year">1970s+</div>
+                  <div class="timeline-content">
+                    <h5>Microprocesadores</h5>
+                    <p>Intel 4004, computadoras personales</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card interactive-card" onclick="toggleCard(this)">
+            <div class="card-header">
+              <h4>1.3 Máquina Secuencial de Programa Almacenado</h4>
+              <span class="toggle-icon">+</span>
+            </div>
+            <div class="card-content">
+              <p>Este modelo propone que tanto los datos como las instrucciones de un programa se almacenen en la misma memoria. La máquina ejecuta las instrucciones una por una mediante un dispositivo de control.</p>
+              <p><strong>Requiere cinco unidades funcionales:</strong></p>
+              <ul>
+                <li>Órgano de cálculo (ALU o CPU)</li>
+                <li>Memoria</li>
+                <li>Unidad de control</li>
+                <li>Unidad de entrada</li>
+                <li>Unidad de salida</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="card interactive-card" onclick="toggleCard(this)">
+            <div class="card-header">
+              <h4>1.4 Organización de la Computadora</h4>
+              <span class="toggle-icon">+</span>
+            </div>
+            <div class="card-content">
+              <p>Se puede estudiar desde dos enfoques complementarios:</p>
+              <ul>
+                <li><strong>Funcional:</strong> describe las tareas que realiza la computadora: procesamiento, almacenamiento, traslado y control de datos.</li>
+                <li><strong>Estructural:</strong> define los componentes físicos: CPU, memoria, y unidades de entrada/salida.</li>
+              </ul>
+              <p>Ambos enfoques son esenciales para comprender cómo funciona una computadora moderna.</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="unidad2">
+          <div class="section-header">
+            <h3>Unidad II: Representación de Datos y Aritmética Computacional</h3>
+            <span class="badge">Fundamentos</span>
+          </div>
+
+          <div class="card interactive-card" onclick="toggleCard(this)">
+            <div class="card-header">
+              <h4>2.1 Sistemas Numéricos</h4>
+              <span class="toggle-icon">+</span>
+            </div>
+            <div class="card-content">
+              <p>Las computadoras utilizan diferentes sistemas numéricos para representar datos:</p>
+              <div class="number-systems">
+                <div class="number-system">
+                  <h5>Binario (Base 2)</h5>
+                  <p>Usa solo 0 y 1</p>
+                  <code>1010<sub>2</sub> = 10<sub>10</sub></code>
+                </div>
+                <div class="number-system">
+                  <h5>Octal (Base 8)</h5>
+                  <p>Usa dígitos 0-7</p>
+                  <code>12<sub>8</sub> = 10<sub>10</sub></code>
+                </div>
+                <div class="number-system">
+                  <h5>Hexadecimal (Base 16)</h5>
+                  <p>Usa 0-9 y A-F</p>
+                  <code>A<sub>16</sub> = 10<sub>10</sub></code>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card interactive-card" onclick="toggleCard(this)">
+            <div class="card-header">
+              <h4>2.2 Representación de Enteros</h4>
+              <span class="toggle-icon">+</span>
+            </div>
+            <div class="card-content">
+              <div class="tab-container">
+                <div class="tab-buttons">
+                  <button class="tab-button active" onclick="openTab(event, 'sign-magnitude')">Signo-Magnitud</button>
+                  <button class="tab-button" onclick="openTab(event, 'complement1')">Complemento a 1</button>
+                  <button class="tab-button" onclick="openTab(event, 'complement2')">Complemento a 2</button>
+                </div>
+                
+                <div id="sign-magnitude" class="tab-content active">
+                  <p>Bit más significativo representa el signo (0=+, 1=-)</p>
+                  <code>+5 = 00000101, -5 = 10000101</code>
+                </div>
+                
+                <div id="complement1" class="tab-content">
+                  <p>Se invierten todos los bits para números negativos</p>
+                  <code>+5 = 00000101, -5 = 11111010</code>
+                </div>
+                
+                <div id="complement2" class="tab-content">
+                  <p>Complemento a 1 + 1, más usado en computadoras</p>
+                  <code>+5 = 00000101, -5 = 11111011</code>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card interactive-card" onclick="toggleCard(this)">
+            <div class="card-header">
+              <h4>2.3 Aritmética de Punto Flotante</h4>
+              <span class="toggle-icon">+</span>
+            </div>
+            <div class="card-content">
+              <p>Representación de números reales usando notación científica:</p>
+              <p><strong>Formato:</strong> Número = mantisa × BASE<sup>exponente</sup></p>
+              <p><strong>Estándar IEEE 754:</strong></p>
+              <ul>
+                <li>Simple precisión: 32 bits</li>
+                <li>Doble precisión: 64 bits</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section id="unidades">
+          <div class="section-header">
+            <h3>Unidades Principales</h3>
+            <span class="badge interactive">Navegación</span>
+          </div>
+          
+          <div class="units-grid">
+            <a href="unidad1.html" class="unit-card">
+              <div class="unit-icon">🏛️</div>
+              <h4>Unidad 1</h4>
+              <p>Introducción y Fundamentos</p>
+              <div class="unit-progress">
+                <div class="progress-bar" style="width: 100%"></div>
+              </div>
+            </a>
+            
+            <a href="unidad2.html" class="unit-card">
+              <div class="unit-icon">🔢</div>
+              <h4>Unidad 2</h4>
+              <p>Representación de Datos</p>
+              <div class="unit-progress">
+                <div class="progress-bar" style="width: 100%"></div>
+              </div>
+            </a>
+            
+            <a href="unidad3.html" class="unit-card">
+              <div class="unit-icon">📋</div>
+              <h4>Unidad 3</h4>
+              <p>Conjunto de Instrucciones</p>
+              <div class="unit-progress">
+                <div class="progress-bar" style="width: 85%"></div>
+              </div>
+            </a>
+            
+            <a href="unidad4.html" class="unit-card">
+              <div class="unit-icon">⚙️</div>
+              <h4>Unidad 4</h4>
+              <p>Unidad de Ejecución</p>
+              <div class="unit-progress">
+                <div class="progress-bar" style="width: 70%"></div>
+              </div>
+            </a>
+            
+            <a href="unidad5.html" class="unit-card">
+              <div class="unit-icon">🎛️</div>
+              <h4>Unidad 5</h4>
+              <p>Unidad de Control</p>
+              <div class="unit-progress">
+                <div class="progress-bar" style="width: 60%"></div>
+              </div>
+            </a>
+            
+            <a href="unidad6.html" class="unit-card">
+              <div class="unit-icon">💾</div>
+              <h4>Unidad 6</h4>
+              <p>Sistema de Memoria</p>
+              <div class="unit-progress">
+                <div class="progress-bar" style="width: 75%"></div>
+              </div>
+            </a>
+            
+            <a href="unidad7.html" class="unit-card">
+              <div class="unit-icon">🔌</div>
+              <h4>Unidad 7</h4>
+              <p>Entrada/Salida</p>
+              <div class="unit-progress">
+                <div class="progress-bar" style="width: 65%"></div>
+              </div>
+            </a>
+          </div>
+        </section>
+
+        <section id="simulador">
+          <div class="section-header">
+            <h3>Laboratorio Virtual</h3>
+            <span class="badge interactive">Simulador</span>
+          </div>
+          
+          <div class="simulator-container">
+            <div class="simulator-tabs">
+              <button class="sim-tab active" onclick="openSimTab('cpu-sim')">CPU</button>
+              <button class="sim-tab" onclick="openSimTab('memory-sim')">Memoria</button>
+              <button class="sim-tab" onclick="openSimTab('pipeline-sim')">Pipeline</button>
+            </div>
+            
+            <div id="cpu-sim" class="sim-tab-content active">
+              <div class="cpu-visual">
+                <div class="cpu-component alu" onclick="showComponentInfo('ALU realiza operaciones aritméticas y lógicas')">
+                  <span>ALU</span>
+                </div>
+                <div class="cpu-component control-unit" onclick="showComponentInfo('Unidad de Control dirige las operaciones')">
+                  <span>UC</span>
+                </div>
+                <div class="cpu-component registers" onclick="showComponentInfo('Registros almacenan datos temporalmente')">
+                  <span>Registros</span>
+                </div>
+                <div class="data-bus"></div>
+              </div>
+              <div class="simulator-info" id="component-info">
+                Haz clic en un componente para ver su información
+              </div>
+            </div>
+            
+            <div id="memory-sim" class="sim-tab-content">
+              <div class="memory-visual">
+                <div class="memory-level cache" onclick="showMemoryInfo('Caché: 1-2ns, 256KB-8MB')">
+                  <div class="level-label">Caché</div>
+                  <div class="level-stats">1-2ns</div>
+                </div>
+                <div class="memory-level ram" onclick="showMemoryInfo('RAM: 10-100ns, 4-64GB')">
+                  <div class="level-label">RAM</div>
+                  <div class="level-stats">10-100ns</div>
+                </div>
+                <div class="memory-level storage" onclick="showMemoryInfo('Almacenamiento: 5-20ms, 256GB-4TB')">
+                  <div class="level-label">Disco</div>
+                  <div class="level-stats">5-20ms</div>
+                </div>
+              </div>
+            </div>
+            
+            <div id="pipeline-sim" class="sim-tab-content">
+              <div class="pipeline-demo">
+                <div class="instruction-flow">
+                  <div class="instruction" data-instruction="MOV R1, 5">MOV R1, 5</div>
+                  <div class="instruction" data-instruction="ADD R2, R1">ADD R2, R1</div>
+                  <div class="instruction" data-instruction="SUB R3, R2">SUB R3, R2</div>
+                </div>
+                <button class="btn" onclick="executePipeline()">Ejecutar Pipeline</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="resumen">
+          <div class="section-header">
+            <h3>Resumen Ejecutivo</h3>
+            <span class="badge">Resumen</span>
+          </div>
+          
+          <div class="summary-cards">
+            <div class="summary-card">
+              <h4>Arquitectura</h4>
+              <div class="metric">7 Unidades</div>
+              <div class="metric-desc">Componentes principales</div>
+            </div>
+            <div class="summary-card">
+              <h4>Rendimiento</h4>
+              <div class="metric">3.2 GHz</div>
+              <div class="metric-desc">Velocidad típica CPU</div>
+            </div>
+            <div class="summary-card">
+              <h4>Memoria</h4>
+              <div class="metric">4 Niveles</div>
+              <div class="metric-desc">Jerarquía</div>
+            </div>
+          </div>
+          
+          <div class="knowledge-check">
+            <h4>Evaluación de Conocimientos</h4>
+            <div class="quiz-container">
+              <div class="quiz-question">
+                <p>¿Qué unidad del CPU se encarga de ejecutar operaciones aritméticas?</p>
+                <div class="quiz-options">
+                  <label><input type="radio" name="q1" value="UC"> Unidad de Control</label>
+                  <label><input type="radio" name="q1" value="ALU"> ALU</label>
+                  <label><input type="radio" name="q1" value="RAM"> Memoria RAM</label>
+                </div>
+              </div>
+              <button class="btn" onclick="checkAnswer()">Verificar Respuesta</button>
+              <div id="quiz-result" class="quiz-result"></div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <aside>
+        <div class="section-header"><h3>Progreso del Curso</h3></div>
+        <div class="progress-card">
+          <div class="progress-circle">
+            <svg width="100" height="100">
+              <circle cx="50" cy="50" r="40" stroke="#333" stroke-width="8" fill="none"></circle>
+              <circle cx="50" cy="50" r="40" stroke="#00fff0" stroke-width="8" fill="none" 
+                      stroke-dasharray="251.2" stroke-dashoffset="125.6" class="progress-ring"></circle>
+            </svg>
+            <div class="progress-text">50%</div>
+          </div>
+          <div class="progress-stats">
+            <div class="stat">
+              <span class="stat-label">Unidades Completadas</span>
+              <span class="stat-value">2/7</span>
+            </div>
+            <div class="stat">
+              <span class="stat-label">Próxima Evaluación</span>
+              <span class="stat-value">7 días</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-header"><h3>Navegación Rápida</h3></div>
+        <div class="quick-nav">
+          <a href="unidad1.html" class="nav-item">
+            <span class="nav-icon">🏛️</span>
+            <span class="nav-text">Introducción</span>
+          </a>
+          <a href="unidad2.html" class="nav-item">
+            <span class="nav-icon">🔢</span>
+            <span class="nav-text">Representación Datos</span>
+          </a>
+          <a href="unidad3.html" class="nav-item">
+            <span class="nav-icon">📋</span>
+            <span class="nav-text">Conjunto Instrucciones</span>
+          </a>
+          <a href="unidad4.html" class="nav-item">
+            <span class="nav-icon">⚙️</span>
+            <span class="nav-text">Unidad Ejecución</span>
+          </a>
+          <a href="unidad5.html" class="nav-item">
+            <span class="nav-icon">🎛️</span>
+            <span class="nav-text">Unidad Control</span>
+          </a>
+          <a href="unidad6.html" class="nav-item">
+            <span class="nav-icon">💾</span>
+            <span class="nav-text">Sistema Memoria</span>
+          </a>
+          <a href="unidad7.html" class="nav-item">
+            <span class="nav-icon">🔌</span>
+            <span class="nav-text">Entrada/Salida</span>
+          </a>
+        </div>
+
+        <div class="section-header"><h3>Recursos Adicionales</h3></div>
+        <div class="resources">
+          <a href="#" class="resource-link" onclick="downloadResource('glosario')">
+            <span class="resource-icon">📚</span>
+            Glosario de Términos
+          </a>
+          <a href="#" class="resource-link" onclick="downloadResource('diagramas')">
+            <span class="resource-icon">📊</span>
+            Diagramas de Referencia
+          </a>
+          <a href="#" class="resource-link" onclick="downloadResource('ejercicios')">
+            <span class="resource-icon">✏️</span>
+            Ejercicios Prácticos
+          </a>
+            <a href="#" class="resource-link" onclick="downloadResource('ejercicios')">
+            <span class="resource-icon">✏️</span>
+            Ejercicios en Arduino
+          </a>
+        </div>
+      </aside>
+    </div>
+
+    <footer>
+      <small>Hecho para uso educativo — Arquitectura de Máquinas (Computadoras II)</small>
+      <small>Paleta neón: cyan • magenta • lima • púrpura</small>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
