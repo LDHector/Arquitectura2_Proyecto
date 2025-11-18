@@ -25,6 +25,7 @@
           <a href="unidad6.html" class="btn">⬅️ Unidad 6</a>
           <button class="btn" onclick="scrollToSection('buses')">🔌 Buses</button>
           <button class="btn" onclick="scrollToSection('transferencias')">🔄 Transferencias</button>
+          <button class="btn" onclick="scrollToSection('arduino')">⚙️ Arduino</button>
         </div>
       </nav>
     </header>
@@ -208,6 +209,348 @@
           </div>
         </section>
 
+        <!-- NUEVA SECCIÓN: PROYECTOS ARDUINO -->
+        <section id="arduino">
+          <div class="section-header">
+            <h3>Implementaciones Arduino</h3>
+            <span class="badge">Práctica</span>
+          </div>
+
+          <div class="card interactive-card" onclick="toggleCard(this)">
+            <div class="card-header">
+              <h4>7.5 Proyectos de Entrada/Salida con Arduino</h4>
+              <span class="toggle-icon">+</span>
+            </div>
+            <div class="card-content">
+              <p>Estos proyectos muestran la implementación práctica de sistemas de entrada/salida utilizando Arduino. Cada simulación está embebida directamente desde Tinkercad para una experiencia interactiva.</p>
+              
+              <div class="arduino-projects">
+                <div class="project-category">
+                  <h5>Sistemas de Conteo Binario</h5>
+                  <div class="project">
+                    <h6>Conteo Binario Automático</h6>
+                    <div class="project-info">
+                      <p><strong>Objetivo:</strong> Implementar un contador binario automático con LEDs</p>
+                      <p><strong>Componentes:</strong> Arduino UNO, 4 LEDs, resistencias</p>
+                      <p><strong>Conceptos:</strong> Salida digital, temporización, representación binaria</p>
+                    </div>
+                    <div class="tinkercad-embed">
+                      <iframe width="100%" height="400" src="https://www.tinkercad.com/embed/eRO2lqm2FEt?editbtn=1" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
+                    </div>
+                    <div class="project-actions">
+                      <a href="https://www.tinkercad.com/things/eRO2lqm2FEt-conteo-binario?sharecode=q6uSRUwG_VcZhyornwAZakFkegMwDah8cjualdqh6vc" target="_blank" class="btn">Abrir en Tinkercad</a>
+                      <button class="btn" onclick="toggleCode('code1')">Ver Código</button>
+                    </div>
+                    <div id="code1" class="code-container" style="display:none">
+                      <pre><code>// Conteo binario automático
+int leds[] = {2, 3, 4, 5}; // Pines para los 4 LEDs
+int tiempo = 500; // Tiempo entre conteos en ms
+
+void setup() {
+  // Configurar todos los pines como salida
+  for (int i = 0; i < 4; i++) {
+    pinMode(leds[i], OUTPUT);
+  }
+}
+
+void loop() {
+  // Contar del 0 al 15 (4 bits)
+  for (int numero = 0; numero < 16; numero++) {
+    mostrarBinario(numero);
+    delay(tiempo);
+  }
+}
+
+void mostrarBinario(int numero) {
+  // Mostrar el número en binario usando los LEDs
+  for (int bit = 0; bit < 4; bit++) {
+    int estado = bitRead(numero, bit);
+    digitalWrite(leds[bit], estado);
+  }
+}</code></pre>
+                    </div>
+                  </div>
+
+                  <div class="project">
+                    <h6>Conteo Binario con Botones</h6>
+                    <div class="project-info">
+                      <p><strong>Objetivo:</strong> Controlar conteo binario mediante botones de incremento y decremento</p>
+                      <p><strong>Componentes:</strong> Arduino UNO, 4 LEDs, 2 botones, resistencias</p>
+                      <p><strong>Conceptos:</strong> Entrada digital, debouncing, control manual</p>
+                    </div>
+                    <div class="tinkercad-embed">
+                      <iframe width="100%" height="400" src="https://www.tinkercad.com/embed/cTkevbxMXcU?editbtn=1" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
+                    </div>
+                    <div class="project-actions">
+                      <a href="https://www.tinkercad.com/things/cTkevbxMXcU-conteo-binario-con-botones?sharecode=n1yMOcaH3nsp_knlrMrmhN75mmErFKUDGUQxRpQVTTY" target="_blank" class="btn">Abrir en Tinkercad</a>
+                      <button class="btn" onclick="toggleCode('code2')">Ver Código</button>
+                    </div>
+                    <div id="code2" class="code-container" style="display:none">
+                      <pre><code>// Conteo binario controlado por botones
+int leds[] = {2, 3, 4, 5}; // Pines para los 4 LEDs
+int botonIncremento = 6;    // Pin para botón de incremento
+int botonDecremento = 7;    // Pin para botón de decremento
+int contador = 0;           // Valor actual del contador
+
+void setup() {
+  // Configurar pines de LEDs como salida
+  for (int i = 0; i < 4; i++) {
+    pinMode(leds[i], OUTPUT);
+  }
+  
+  // Configurar pines de botones como entrada
+  pinMode(botonIncremento, INPUT_PULLUP);
+  pinMode(botonDecremento, INPUT_PULLUP);
+  
+  // Mostrar valor inicial
+  mostrarBinario(contador);
+}
+
+void loop() {
+  // Verificar botón de incremento
+  if (digitalRead(botonIncremento) == LOW) {
+    contador++;
+    if (contador > 15) contador = 0;
+    mostrarBinario(contador);
+    delay(300); // Debouncing simple
+  }
+  
+  // Verificar botón de decremento
+  if (digitalRead(botonDecremento) == LOW) {
+    contador--;
+    if (contador < 0) contador = 15;
+    mostrarBinario(contador);
+    delay(300); // Debouncing simple
+  }
+}
+
+void mostrarBinario(int numero) {
+  // Mostrar el número en binario usando los LEDs
+  for (int bit = 0; bit < 4; bit++) {
+    int estado = bitRead(numero, bit);
+    digitalWrite(leds[bit], estado);
+  }
+}</code></pre>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="project-category">
+                  <h5>Control Básico de Entrada/Salida</h5>
+                  <div class="project">
+                    <h6>Encender LED con Botón</h6>
+                    <div class="project-info">
+                      <p><strong>Objetivo:</strong> Controlar un LED mediante un pulsador</p>
+                      <p><strong>Componentes:</strong> Arduino UNO, LED, botón, resistencias</p>
+                      <p><strong>Conceptos:</strong> Entrada digital, salida digital, lógica de control</p>
+                    </div>
+                    <div class="tinkercad-embed">
+                      <iframe width="100%" height="400" src="https://www.tinkercad.com/embed/5u2bkx0RnJX?editbtn=1" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
+                    </div>
+                    <div class="project-actions">
+                      <a href="https://www.tinkercad.com/things/5u2bkx0RnJX-encender-led-con-boton" target="_blank" class="btn">Abrir en Tinkercad</a>
+                      <button class="btn" onclick="toggleCode('code3')">Ver Código</button>
+                    </div>
+                    <div id="code3" class="code-container" style="display:none">
+                      <pre><code>// Encender LED con botón
+const int pinBoton = 2;   // Pin del botón
+const int pinLED = 13;    // Pin del LED
+int estadoBoton = 0;      // Estado actual del botón
+
+void setup() {
+  pinMode(pinLED, OUTPUT);      // Configurar LED como salida
+  pinMode(pinBoton, INPUT);     // Configurar botón como entrada
+}
+
+void loop() {
+  // Leer el estado del botón
+  estadoBoton = digitalRead(pinBoton);
+  
+  // Verificar si el botón está presionado
+  if (estadoBoton == HIGH) {
+    digitalWrite(pinLED, HIGH);  // Encender LED
+  } else {
+    digitalWrite(pinLED, LOW);   // Apagar LED
+  }
+}</code></pre>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="project-category">
+                  <h5>Sistemas de Visualización</h5>
+                  <div class="project">
+                    <h6>Bola de Cristal con LCD</h6>
+                    <div class="project-info">
+                      <p><strong>Objetivo:</strong> Mostrar mensajes aleatorios en pantalla LCD al presionar un botón</p>
+                      <p><strong>Componentes:</strong> Arduino UNO, pantalla LCD, botón, potenciómetro</p>
+                      <p><strong>Conceptos:</strong> Comunicación con periféricos, librerías, entrada digital</p>
+                    </div>
+                    <div class="tinkercad-embed">
+                      <iframe width="100%" height="400" src="https://www.tinkercad.com/embed/8fqkOU7ESuE?editbtn=1" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
+                    </div>
+                    <div class="project-actions">
+                      <a href="https://www.tinkercad.com/things/8fqkOU7ESuE-2-control-de-mensajes?sharecode=R_U3plX2LrRT_6NN-XZR5clB9vYt1NG9Pe2bJJHgLDw" target="_blank" class="btn">Abrir en Tinkercad</a>
+                      <button class="btn" onclick="toggleCode('code4')">Ver Código</button>
+                    </div>
+                    <div id="code4" class="code-container" style="display:none">
+                      <pre><code>// Bola de cristal - Mensajes aleatorios en LCD
+#include <LiquidCrystal.h>
+
+// Configurar pines para LCD
+LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
+const int pinBoton = 6;  // Pin del botón
+
+// Lista de mensajes posibles
+String mensajes[] = {
+  "SI",
+  "NO",
+  "QUIZAS",
+  "PROBABLEMENTE",
+  "NO CUENTES CON ELLO",
+  "DEFINITIVAMENTE"
+};
+int totalMensajes = 6;
+
+void setup() {
+  lcd.begin(16, 2);           // Inicializar LCD 16x2
+  pinMode(pinBoton, INPUT);   // Configurar botón como entrada
+  
+  lcd.print("Haz una");
+  lcd.setCursor(0, 1);
+  lcd.print("pregunta...");
+}
+
+void loop() {
+  // Verificar si el botón está presionado
+  if (digitalRead(pinBoton) == HIGH) {
+    // Generar mensaje aleatorio
+    int indice = random(totalMensajes);
+    
+    // Mostrar mensaje en LCD
+    lcd.clear();
+    lcd.print("La respuesta:");
+    lcd.setCursor(0, 1);
+    lcd.print(mensajes[indice]);
+    
+    delay(2000); // Esperar 2 segundos
+    
+    // Volver al estado inicial
+    lcd.clear();
+    lcd.print("Haz una");
+    lcd.setCursor(0, 1);
+    lcd.print("pregunta...");
+    
+    delay(500); // Pequeña pausa
+  }
+}</code></pre>
+                    </div>
+                  </div>
+
+                  <div class="project">
+                    <h6>Sistema de Control Complejo</h6>
+                    <div class="project-info">
+                      <p><strong>Objetivo:</strong> Implementar un sistema de control con múltiples entradas y salidas</p>
+                      <p><strong>Componentes:</strong> Arduino UNO, LEDs, botones, sensor, display</p>
+                      <p><strong>Conceptos:</strong> Sistema integrado, múltiples E/S, lógica de control</p>
+                    </div>
+                    <div class="tinkercad-embed">
+                      <iframe width="100%" height="400" src="https://www.tinkercad.com/embed/5KaYVq7LnO9?editbtn=1" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
+                    </div>
+                    <div class="project-actions">
+                      <a href="https://www.tinkercad.com/things/5KaYVq7LnO9-stunning-snicket?sharecode=e-pKxeINwcSwjMAYmlA-o8MNAXwh52fImXFuy-yvWFs" target="_blank" class="btn">Abrir en Tinkercad</a>
+                      <button class="btn" onclick="toggleCode('code5')">Ver Código</button>
+                    </div>
+                    <div id="code5" class="code-container" style="display:none">
+                      <pre><code>// Sistema de control complejo
+// Proyecto integrado con múltiples componentes
+
+// Definición de pines
+const int boton1 = 2;
+const int boton2 = 3;
+const int sensor = A0;
+const int led1 = 8;
+const int led2 = 9;
+const int led3 = 10;
+
+// Variables del sistema
+int estadoSistema = 0;
+int valorSensor = 0;
+
+void setup() {
+  // Configurar pines
+  pinMode(boton1, INPUT_PULLUP);
+  pinMode(boton2, INPUT_PULLUP);
+  pinMode(led1, OUTPUT);
+  pinMode(led2, OUTPUT);
+  pinMode(led3, OUTPUT);
+  
+  // Inicializar comunicación serial
+  Serial.begin(9600);
+  Serial.println("Sistema iniciado");
+}
+
+void loop() {
+  // Leer entradas
+  int pulsador1 = digitalRead(boton1);
+  int pulsador2 = digitalRead(boton2);
+  valorSensor = analogRead(sensor);
+  
+  // Lógica de control del sistema
+  if (pulsador1 == LOW) {
+    estadoSistema = 1;
+    activarModo1();
+  } else if (pulsador2 == LOW) {
+    estadoSistema = 2;
+    activarModo2();
+  } else {
+    estadoSistema = 0;
+    modoReposo();
+  }
+  
+  // Monitoreo por serial
+  Serial.print("Estado: ");
+  Serial.print(estadoSistema);
+  Serial.print(" | Sensor: ");
+  Serial.println(valorSensor);
+  
+  delay(100);
+}
+
+void activarModo1() {
+  digitalWrite(led1, HIGH);
+  digitalWrite(led2, LOW);
+  
+  // LED 3 parpadea
+  digitalWrite(led3, !digitalRead(led3));
+  delay(500);
+}
+
+void activarModo2() {
+  digitalWrite(led1, LOW);
+  digitalWrite(led2, HIGH);
+  
+  // Controlar LED 3 según sensor
+  if (valorSensor > 512) {
+    digitalWrite(led3, HIGH);
+  } else {
+    digitalWrite(led3, LOW);
+  }
+}
+
+void modoReposo() {
+  digitalWrite(led1, LOW);
+  digitalWrite(led2, LOW);
+  digitalWrite(led3, LOW);
+}</code></pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section id="simulador">
           <div class="section-header">
             <h3>Simulador de E/S</h3>
@@ -299,7 +642,7 @@
           <div class="progress-stats">
             <div class="stat">
               <span class="stat-label">Temas Completados</span>
-              <span class="stat-value">4/4</span>
+              <span class="stat-value">5/5</span>
             </div>
             <div class="stat">
               <span class="stat-label">Simulador</span>
@@ -329,6 +672,26 @@
           <div class="irq-item">
             <span class="irq">IRQ 14</span>
             <span class="irq-device">Controlador IDE</span>
+          </div>
+        </div>
+
+        <div class="section-header"><h3>Proyectos Arduino</h3></div>
+        <div class="arduino-links">
+          <div class="project-link">
+            <a href="#arduino" class="btn">Conteo Binario</a>
+            <small>Sistemas de conteo</small>
+          </div>
+          <div class="project-link">
+            <a href="#arduino" class="btn">LED con Botón</a>
+            <small>Control básico E/S</small>
+          </div>
+          <div class="project-link">
+            <a href="#arduino" class="btn">Bola de Cristal</a>
+            <small>Visualización LCD</small>
+          </div>
+          <div class="project-link">
+            <a href="#arduino" class="btn">Sistema Complejo</a>
+            <small>Control integrado</small>
           </div>
         </div>
 
@@ -446,6 +809,16 @@
       entry.textContent = `[${new Date().toLocaleTimeString()}] ${message}`;
       log.appendChild(entry);
       log.scrollTop = log.scrollHeight;
+    }
+
+    // Funciones para proyectos Arduino
+    function toggleCode(id) {
+      const codeContainer = document.getElementById(id);
+      if (codeContainer.style.display === 'none') {
+        codeContainer.style.display = 'block';
+      } else {
+        codeContainer.style.display = 'none';
+      }
     }
 
     // Estilos adicionales para la unidad 7
@@ -596,6 +969,102 @@
       .completion-card h4 {
         color: var(--neon-lime);
         margin-bottom: 10px;
+      }
+      
+      /* Estilos para la sección Arduino */
+      .arduino-projects {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        margin-top: 20px;
+      }
+      .project-category {
+        margin-bottom: 20px;
+      }
+      .project-category h5 {
+        color: var(--neon-purple);
+        font-size: 1.3rem;
+        margin-bottom: 15px;
+        padding-bottom: 5px;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+      }
+      .project {
+        background: rgba(0,0,0,0.2);
+        padding: 20px;
+        border-radius: 8px;
+        border: 1px solid rgba(255,255,255,0.1);
+        margin-bottom: 20px;
+      }
+      .project h6 {
+        color: var(--neon-cyan);
+        margin-bottom: 15px;
+        font-size: 1.1rem;
+      }
+      .project-info {
+        margin-bottom: 15px;
+      }
+      .project-info p {
+        margin: 5px 0;
+      }
+      .tinkercad-embed {
+        margin: 15px 0;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      }
+      .project-actions {
+        display: flex;
+        gap: 10px;
+        margin: 15px 0;
+        flex-wrap: wrap;
+      }
+      .project-actions .btn {
+        background: rgba(0,0,0,0.3);
+        border: 1px solid var(--neon-purple);
+        padding: 8px 15px;
+        font-size: 0.9rem;
+      }
+      .code-container {
+        margin-top: 15px;
+        background: #1e1e1e;
+        border-radius: 8px;
+        overflow: hidden;
+      }
+      .code-container pre {
+        margin: 0;
+        padding: 15px;
+        overflow-x: auto;
+      }
+      .code-container code {
+        color: #d4d4d4;
+        font-family: 'Courier New', monospace;
+        font-size: 0.9rem;
+        line-height: 1.4;
+      }
+      .arduino-links {
+        background: rgba(0,0,0,0.2);
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        border: 1px solid rgba(255,255,255,0.1);
+      }
+      .project-link {
+        margin-bottom: 10px;
+        padding: 10px;
+        background: rgba(255,255,255,0.05);
+        border-radius: 6px;
+      }
+      .project-link:last-child {
+        margin-bottom: 0;
+      }
+      .project-link .btn {
+        width: 100%;
+        text-align: left;
+        margin-bottom: 5px;
+      }
+      .project-link small {
+        color: #9fb8ff;
+        font-size: 0.8rem;
       }
     `;
     document.head.appendChild(style);
